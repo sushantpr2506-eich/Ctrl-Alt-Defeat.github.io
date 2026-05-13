@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ctrl-Alt-Defeat | FTC Team 31844</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex; align-items: center;
+      padding: 4rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 45%, rgba(201,64,64,0.12) 0%, transparent 65%),
+        linear-gradient(180deg, transparent 60%, rgba(15,17,23,0.6) 100%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,64,64,0.1); border: 1px solid rgba(201,64,64,0.3);
+      border-radius: 100px; padding: 0.3rem 1rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--red); margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.95; letter-spacing: 2px; margin-bottom: 1.5rem;
+    }
+    .hero h1 .red { color: var(--red); }
+    .hero p { font-size: 1.1rem; color: var(--muted2); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.75; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-num {
+      position: absolute; right: -20px; bottom: -40px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(10rem, 22vw, 22rem);
+      color: rgba(255,255,255,0.02); pointer-events: none; user-select: none;
+      letter-spacing: -8px; line-height: 1;
+    }
+
+    .stats-bar { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 2rem 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stat { text-align: center; padding: 1rem; }
+    .stat .num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--red); line-height: 1; }
+    .stat .lbl { font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .about-text p { color: var(--muted2); margin-bottom: 1rem; font-size: 1rem; }
+
+    .highlights { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+    .hl-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+    .hl-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-3px); }
+    .hl-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+    .hl-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    .hl-card p { font-size: 0.9rem; color: var(--muted2); line-height: 1.65; }
+
+    @media(max-width:768px) {
+      .hero { padding: 3rem 1.25rem; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); padding: 1.5rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .highlights { grid-template-columns: 1fr; }
+      .hero-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About FIRST</a></li>
+      <li><a href="season.html">Season</a></li>
+      <li><a href="robot.html">Robot</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a><a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a><a href="robot.html">Robot</a>
+    <a href="team.html">Team</a><a href="outreach.html">Outreach</a>
+    <a href="resources.html">Resources</a><a href="contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">FTC Team #31844 &nbsp;·&nbsp; DECODE 2025–26</div>
+      <h1>CTRL<br/><span class="red">ALT</span><br/>DEFEAT</h1>
+      <p>We're a passionate FTC robotics team pushing the limits of engineering, programming, and teamwork — one season at a time.</p>
+      <div class="hero-btns">
+        <a href="robot.html" class="btn btn-red">Meet Our Robot</a>
+        <a href="team.html" class="btn btn-outline">Our Team</a>
+      </div>
+    </div>
+    <div class="hero-num">31844</div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat"><div class="num">31844</div><div class="lbl">Team Number</div></div>
+      <div class="stat"><div class="num">1st</div><div class="lbl">Season</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">Members</div></div>
+      <div class="stat"><div class="num">DECODE</div><div class="lbl">2025–26 Game</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT SNIPPET -->
+  <section class="section" style="background: var(--dark2);">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">Built to Compete.<br/>Driven to Inspire.</h2>
+          <div class="divider"></div>
+          <div class="about-text">
+            <p>Ctrl-Alt-Defeat (Team #31844) is an FTC robotics team competing in the FIRST Tech Challenge. We are a group of students passionate about engineering, coding, and community.</p>
+            <p>Our name says it all — we don't just compete, we come to rewrite the outcome. Every match, every build, every line of code is our way of hitting Ctrl-Alt-Defeat on the problem in front of us.</p>
+          </div>
+          <a href="about.html" class="btn btn-outline" style="margin-top:1rem;">Learn About FIRST →</a>
+        </div>
+        <div style="display:flex; justify-content:center; align-items:center;">
+          <img src="logo.png" alt="Team Logo" style="width:280px; height:280px; object-fit:contain; filter: drop-shadow(0 0 40px rgba(201,64,64,0.25));">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">More Than Just Robots</h2>
+      <div class="highlights">
+        <div class="hl-card">
+          <div class="hl-icon">⚙️</div>
+          <h3>Engineering</h3>
+          <p>We design, build, and iterate our robot using CAD tools and hands-on fabrication to tackle this season's challenges.</p>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">💻</div>
+          <h3>Programming</h3>
+          <p>Our code powers autonomous routines, driver control, and computer vision — written in Java using the FTC SDK.</p>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">🤝</div>
+          <h3>Outreach</h3>
+          <p>We give back to the community through school demos, STEM events, and mentoring younger robotics teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
