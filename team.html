@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meet the Team | Ctrl-Alt-Defeat #31844</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 4rem 2.5rem 3rem;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .page-hero p {
+      color: var(--muted2); font-size: 1.05rem;
+      max-width: 560px; margin-top: 1rem;
+    }
+    .divider-red {
+      width: 56px; height: 3px;
+      background: var(--red); border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    /* ── ROBOT SECTION ── */
+    .robot-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 5rem 2.5rem;
+      background: var(--dark);
+    }
+
+    .robot-photo-wrap {
+      position: relative;
+      width: 420px;
+      max-width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .robot-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 20px;
+      background: radial-gradient(ellipse at center, rgba(201,64,64,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .robot-photo-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid rgba(201,64,64,0.25);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .robot-photo-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .robot-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.75rem;
+      color: var(--muted);
+    }
+    .robot-placeholder .ico { font-size: 4rem; opacity: 0.25; }
+    .robot-placeholder p { font-size: 0.85rem; }
+
+    .robot-name-tag {
+      position: absolute;
+      bottom: 1rem; left: 50%; transform: translateX(-50%);
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(201,64,64,0.3);
+      border-radius: 100px;
+      padding: 0.35rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    .robot-text {
+      max-width: 680px;
+    }
+    .robot-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+    .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
+    .robot-text p {
+      color: var(--muted2);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .robot-text p:last-child { margin-bottom: 0; }
+
+    /* ── TEAM SECTION ── */
+    .team-section {
+      padding: 5rem 2.5rem;
+      background: var(--dark2);
+    }
+
+    .team-section .section-label { margin-bottom: 0.5rem; }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .member-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .member-card:hover {
+      border-color: rgba(201,64,64,0.4);
+      transform: translateY(-5px);
+    }
+
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .member-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .member-initials {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--red);
+      opacity: 0.5;
+    }
+
+    .member-info {
+      padding: 1.1rem 1.25rem 1.4rem;
+    }
+    .member-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+    .member-role {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.65rem;
+    }
+    .member-bio {
+      font-size: 0.82rem;
+      color: var(--muted2);
+      line-height: 1.6;
+    }
+
+    .captain-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 1024px) {
+      .members-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media(max-width: 768px) {
+      .members-grid { grid-template-columns: repeat(2, 1fr); }
+      .robot-section { padding: 3.5rem 1.25rem; }
+      .team-section { padding: 3.5rem 1.25rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+    }
+    @media(max-width: 480px) {
+      .members-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About FIRST</a></li>
+      <li><a href="season.html">Season</a></li>
+      <li><a href="robot.html">Robot</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a>
+    <a href="robot.html">Robot</a>
+    <a href="team.html">Team</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Team #31844</div>
+      <h1>Meet the Team</h1>
+      <div class="divider-red"></div>
+      <p>The students, mentors, and coaches behind Ctrl-Alt-Defeat. Every robot is built by people — here are ours.</p>
+    </div>
+  </div>
+
+  <!-- ROBOT SECTION -->
+  <div class="robot-section">
+    <div class="robot-photo-wrap">
+      <div class="robot-photo-box">
+        <!-- ✏️ REPLACE THIS with your robot photo:
+             Delete the div.robot-placeholder below and add:
+             <img src="robot.jpg" alt="Our Robot"> -->
+        <div class="robot-placeholder">
+          <div class="ico">🤖</div>
+          <p>Add your robot photo here<br/>
+          Replace with: &lt;img src="robot.jpg"&gt;</p>
+        </div>
+        <div class="robot-name-tag">FTC Team #31844 · DECODE 2025–26</div>
+      </div>
+    </div>
+
+    <div class="robot-text">
+      <h2>Our Robot</h2>
+      <div class="divider-red"></div>
+      <!-- ✏️ REPLACE the paragraph(s) below with your robot description -->
+      <p>Write a description of your robot here. What does it do? What makes it special for the DECODE season? Talk about your drivetrain, key mechanisms, and what design decisions you're most proud of.</p>
+      <p>You can add a second paragraph here going deeper — autonomous capabilities, programming approach, or how the robot evolved over the season through iteration and testing.</p>
+    </div>
+  </div>
+
+  <!-- TEAM MEMBERS -->
+  <div class="team-section">
+    <div class="container">
+      <div class="section-label">The People</div>
+      <h2 class="section-title">Our Members</h2>
+      <p class="section-sub">The 10 students who make it all happen — from building and coding to outreach and strategy.</p>
+
+      <div class="members-grid">
+
+        <!-- ✏️ MEMBER 1 — Captain -->
+        <div class="member-card">
+          <div class="member-photo">
+            <!-- Replace with: <img src="member1.jpg" alt="Name"> -->
+            <div class="member-initials">AB</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name <span class="captain-badge">Captain</span></div>
+            <div class="member-role">Team Captain</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 2 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Lead Programmer</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 3 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Mechanical Lead</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 4 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">CAD Designer</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 5 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Outreach Lead</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 6 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Driver</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 7 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Build Team</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 8 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Programmer</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 9 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Build Team</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+        <!-- ✏️ MEMBER 10 -->
+        <div class="member-card">
+          <div class="member-photo">
+            <div class="member-initials">XX</div>
+          </div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Build Team</div>
+            <div class="member-bio">Short bio about this member — their grade, what they work on, and what they love about the team.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
