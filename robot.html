@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Robot | Ctrl-Alt-Defeat #31844</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero {
+      padding: 4rem 2.5rem 3rem;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .page-hero p {
+      color: var(--muted2); font-size: 1.05rem;
+      max-width: 560px; margin-top: 1rem;
+    }
+    .divider-red {
+      width: 56px; height: 3px;
+      background: var(--red); border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    /* ── ROBOT HERO ── */
+    .robot-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 5rem 2.5rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .robot-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(201,64,64,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .robot-photo-wrap {
+      position: relative;
+      width: 500px;
+      max-width: 100%;
+      margin-bottom: 3.5rem;
+      z-index: 1;
+    }
+    .robot-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -24px; left: 10%; right: 10%;
+      height: 40px;
+      background: rgba(201,64,64,0.2);
+      filter: blur(20px);
+      border-radius: 50%;
+    }
+
+    .robot-photo-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid rgba(201,64,64,0.25);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .robot-photo-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .robot-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.75rem; color: var(--muted);
+    }
+    .robot-placeholder .ico { font-size: 5rem; opacity: 0.2; }
+    .robot-placeholder p { font-size: 0.85rem; line-height: 1.6; }
+
+    .robot-text {
+      max-width: 700px;
+      z-index: 1;
+    }
+    .robot-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
+    .robot-text p {
+      color: var(--muted2);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    @media(max-width: 768px) {
+      .robot-hero { padding: 3.5rem 1.25rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About FIRST</a></li>
+      <li><a href="season.html">Season</a></li>
+      <li><a href="robot.html" class="active">Robot</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a>
+    <a href="robot.html">Robot</a>
+    <a href="team.html">Team</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Engineering</div>
+      <h1>Our Robot</h1>
+      <div class="divider-red"></div>
+      <p>Designed, built, and programmed entirely by Team #31844 for the FTC DECODE 2025–26 season.</p>
+    </div>
+  </div>
+
+  <!-- ROBOT SECTION -->
+  <div class="robot-hero">
+    <div class="robot-photo-wrap">
+      <div class="robot-photo-box">
+        <!-- ✏️ WHEN YOU HAVE THE PHOTO:
+             Delete everything inside robot-photo-box
+             and replace with: <img src="robot.jpg" alt="Our Robot"> -->
+        <div class="robot-placeholder">
+          <div class="ico">🤖</div>
+          <p>Your robot photo goes here<br/>
+          Replace with: &lt;img src="robot.jpg" alt="Our Robot"&gt;</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="robot-text">
+      <h2>Meet Our Robot</h2>
+      <div class="divider-red"></div>
+      <!-- ✏️ REPLACE these paragraphs with your real robot description -->
+      <p>Write about your robot here — what it does, what makes it effective for the DECODE season, and what design decisions you're most proud of.</p>
+      <p>Add a second paragraph here if you want — talk about autonomous capabilities, your programming approach, or how the robot improved through testing and iteration over the season.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
