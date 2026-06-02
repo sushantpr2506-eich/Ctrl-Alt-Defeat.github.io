@@ -6,8 +6,6 @@
   <title>Meet the Team | Ctrl-Alt-Defeat #31844</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-
-    /* ── PAGE HERO ── */
     .page-hero {
       padding: 4rem 2.5rem 3rem;
       background: var(--dark2);
@@ -28,99 +26,10 @@
       margin: 1.25rem 0;
     }
 
-    /* ── ROBOT SECTION ── */
-    .robot-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 5rem 2.5rem;
-      background: var(--dark);
-    }
-
-    .robot-photo-wrap {
-      position: relative;
-      width: 420px;
-      max-width: 100%;
-      margin-bottom: 3rem;
-    }
-
-    .robot-photo-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -16px;
-      border-radius: 20px;
-      background: radial-gradient(ellipse at center, rgba(201,64,64,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .robot-photo-box {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: 16px;
-      background: var(--card);
-      border: 1px solid rgba(201,64,64,0.25);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .robot-photo-box img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-
-    .robot-placeholder {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0.75rem;
-      color: var(--muted);
-    }
-    .robot-placeholder .ico { font-size: 4rem; opacity: 0.25; }
-    .robot-placeholder p { font-size: 0.85rem; }
-
-    .robot-name-tag {
-      position: absolute;
-      bottom: 1rem; left: 50%; transform: translateX(-50%);
-      background: rgba(15,17,23,0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(201,64,64,0.3);
-      border-radius: 100px;
-      padding: 0.35rem 1.25rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      white-space: nowrap;
-    }
-
-    .robot-text {
-      max-width: 680px;
-    }
-    .robot-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: 2px;
-      margin-bottom: 0.75rem;
-    }
-    .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
-    .robot-text p {
-      color: var(--muted2);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .robot-text p:last-child { margin-bottom: 0; }
-
-    /* ── TEAM SECTION ── */
     .team-section {
       padding: 5rem 2.5rem;
       background: var(--dark2);
     }
-
-    .team-section .section-label { margin-bottom: 0.5rem; }
 
     .members-grid {
       display: grid;
@@ -149,7 +58,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      position: relative;
     }
     .member-photo img {
       width: 100%; height: 100%;
@@ -200,7 +108,6 @@
       vertical-align: middle;
     }
 
-    /* ── FOOTER ── */
     footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
@@ -212,25 +119,17 @@
     .footer-links a:hover { color: var(--light); }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
-    /* ── RESPONSIVE ── */
-    @media(max-width: 1024px) {
-      .members-grid { grid-template-columns: repeat(4, 1fr); }
-    }
+    @media(max-width: 1024px) { .members-grid { grid-template-columns: repeat(4, 1fr); } }
     @media(max-width: 768px) {
       .members-grid { grid-template-columns: repeat(2, 1fr); }
-      .robot-section { padding: 3.5rem 1.25rem; }
       .team-section { padding: 3.5rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
-    }
-    @media(max-width: 480px) {
-      .members-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- NAV -->
   <nav>
     <a class="nav-brand" href="index.html">
       <img class="nav-logo" src="logo.png" alt="Logo">
@@ -261,42 +160,15 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="container">
       <div class="section-label">Team #31844</div>
       <h1>Meet the Team</h1>
       <div class="divider-red"></div>
-      <p>The students, mentors, and coaches behind Ctrl-Alt-Defeat. Every robot is built by people — here are ours.</p>
+      <p>The students behind Ctrl-Alt-Defeat. Every robot is built by people — here are ours.</p>
     </div>
   </div>
 
-  <!-- ROBOT SECTION -->
-  <div class="robot-section">
-    <div class="robot-photo-wrap">
-      <div class="robot-photo-box">
-        <!-- ✏️ REPLACE THIS with your robot photo:
-             Delete the div.robot-placeholder below and add:
-             <img src="robot.jpg" alt="Our Robot"> -->
-        <div class="robot-placeholder">
-          <div class="ico">🤖</div>
-          <p>Add your robot photo here<br/>
-          Replace with: &lt;img src="robot.jpg"&gt;</p>
-        </div>
-        <div class="robot-name-tag">FTC Team #31844 · DECODE 2025–26</div>
-      </div>
-    </div>
-
-    <div class="robot-text">
-      <h2>Our Robot</h2>
-      <div class="divider-red"></div>
-      <!-- ✏️ REPLACE the paragraph(s) below with your robot description -->
-      <p>Write a description of your robot here. What does it do? What makes it special for the DECODE season? Talk about your drivetrain, key mechanisms, and what design decisions you're most proud of.</p>
-      <p>You can add a second paragraph here going deeper — autonomous capabilities, programming approach, or how the robot evolved over the season through iteration and testing.</p>
-    </div>
-  </div>
-
-  <!-- TEAM MEMBERS -->
   <div class="team-section">
     <div class="container">
       <div class="section-label">The People</div>
@@ -430,7 +302,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div>
