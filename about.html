@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About FIRST | Ctrl-Alt-Defeat #31844</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero {
+      padding: 4rem 2.5rem 3rem;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .page-hero p {
+      color: var(--muted2); font-size: 1.05rem;
+      max-width: 560px; margin-top: 1rem;
+    }
+    .divider-red {
+      width: 56px; height: 3px;
+      background: var(--red); border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    /* WHAT IS FIRST */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .what-grid p { color: var(--muted2); margin-bottom: 1rem; font-size: 1rem; }
+
+    .first-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .first-box .big { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: var(--red); letter-spacing: 4px; }
+    .first-box .sub { color: var(--muted2); font-size: 0.85rem; margin-top: 0.75rem; line-height: 1.7; }
+
+    /* ACRONYM */
+    .acronym-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .acr-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .acr-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-3px); }
+    .acr-letter { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--red); line-height: 1; }
+    .acr-word { font-weight: 700; font-size: 0.95rem; margin: 0.4rem 0 0.3rem; }
+    .acr-desc { font-size: 0.82rem; color: var(--muted2); }
+
+    /* PROGRAMS */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .prog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .prog-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-3px); }
+    .prog-card.highlight { border-color: rgba(201,64,64,0.5); background: rgba(201,64,64,0.06); }
+    .prog-tag {
+      display: inline-block;
+      background: var(--dark3);
+      color: var(--muted2);
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 3px;
+      margin-bottom: 0.75rem;
+    }
+    .prog-tag.us { background: var(--red); color: #fff; }
+    .prog-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .prog-card p { font-size: 0.9rem; color: var(--muted2); line-height: 1.65; }
+
+    /* CTA */
+    .cta-box {
+      background: rgba(201,64,64,0.07);
+      border: 1px solid rgba(201,64,64,0.2);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .cta-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .cta-box p { color: var(--muted2); margin-bottom: 1.75rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    @media(max-width: 768px) {
+      .what-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .acronym-grid { grid-template-columns: repeat(2, 1fr); }
+      .programs-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+      .section { padding: 4rem 1.25rem; }
+      .cta-box { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About FIRST</a></li>
+      <li><a href="season.html">Season</a></li>
+      <li><a href="robot.html">Robot</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a>
+    <a href="robot.html">Robot</a>
+    <a href="team.html">Team</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Organization</div>
+      <h1>About FIRST</h1>
+      <div class="divider-red"></div>
+      <p>FIRST inspires young people to become science and technology leaders through mentor-based robotics programs.</p>
+    </div>
+  </div>
+
+  <!-- WHAT IS FIRST -->
+  <section class="section">
+    <div class="container">
+      <div class="what-grid">
+        <div>
+          <div class="section-label">The Organization</div>
+          <h2 class="section-title">What is FIRST?</h2>
+          <div class="divider-red"></div>
+          <p>FIRST (For Inspiration and Recognition of Science and Technology) is a nonprofit organization founded in 1989 by inventor Dean Kamen. Its mission is to inspire young people to be science and technology leaders and innovators.</p>
+          <p>FIRST organizes robotics competitions and programs that engage students from kindergarten through high school. Participants design and build robots, develop business plans, and learn about STEM careers — all while embodying core values like teamwork, gracious professionalism, and inclusion.</p>
+          <p>Today, FIRST reaches over 680,000 students in more than 110 countries worldwide.</p>
+        </div>
+        <div class="first-box">
+          <div class="big">FIRST</div>
+          <div class="sub">
+            For Inspiration and Recognition<br/>of Science and Technology<br/><br/>
+            Founded 1989 · Dean Kamen<br/>
+            680,000+ students worldwide<br/>
+            110+ countries
+          </div>
+        </div>
+      </div>
+
+      <!-- ACRONYM -->
+      <div style="margin-top: 4rem;">
+        <div class="section-label">The Name</div>
+        <h2 class="section-title">What Does FIRST Stand For?</h2>
+        <div class="acronym-grid">
+          <div class="acr-card">
+            <div class="acr-letter">F</div>
+            <div class="acr-word">For</div>
+            <div class="acr-desc">Everything we do is for students and their future.</div>
+          </div>
+          <div class="acr-card">
+            <div class="acr-letter">I</div>
+            <div class="acr-word">Inspiration</div>
+            <div class="acr-desc">Sparking curiosity and passion for science and technology.</div>
+          </div>
+          <div class="acr-card">
+            <div class="acr-letter">R</div>
+            <div class="acr-word">Recognition</div>
+            <div class="acr-desc">Celebrating achievement in STEM just like in sports.</div>
+          </div>
+          <div class="acr-card">
+            <div class="acr-letter">ST</div>
+            <div class="acr-word">Science & Technology</div>
+            <div class="acr-desc">Building real skills that last a lifetime.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="section" style="background: var(--dark2);">
+    <div class="container">
+      <div class="section-label">Programs</div>
+      <h2 class="section-title">FIRST Programs</h2>
+      <p class="section-sub">FIRST offers programs for all ages — from early exploration to advanced engineering challenges.</p>
+      <div class="programs-grid">
+        <div class="prog-card">
+          <span class="prog-tag">Ages 4–8</span>
+          <h3>FIRST LEGO League Jr.</h3>
+          <p>Young children explore STEM through simple LEGO-based projects focused on discovery and teamwork.</p>
+        </div>
+        <div class="prog-card">
+          <span class="prog-tag">Ages 9–16</span>
+          <h3>FIRST LEGO League</h3>
+          <p>Students build and program LEGO robots to solve real-world challenges while developing research projects.</p>
+        </div>
+        <div class="prog-card highlight">
+          <span class="prog-tag us">We Are Here · Ages 12–18</span>
+          <h3>FIRST Tech Challenge ✦</h3>
+          <p>Teams design, build, and program robots to compete in an alliance-based format using real engineering tools and Java — that's us, Team #31844!</p>
+        </div>
+        <div class="prog-card">
+          <span class="prog-tag">Ages 14–18</span>
+          <h3>FIRST Robotics Competition</h3>
+          <p>High school students build large-scale robots in just 6 weeks to compete in high-energy arena matches with professional-grade hardware.</p>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h2>Ready to Learn More?</h2>
+        <p>Visit the official FIRST website to explore programs, find events, and discover how to get involved.</p>
+        <a href="https://www.firstinspires.org" target="_blank" class="btn btn-red">Visit FIRST Website ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
