@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outreach | Ctrl-Alt-Defeat #31844</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero {
+      padding: 4rem 2.5rem 3rem;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
+    .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
+
+    /* IMPACT STATS */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .impact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .impact-card.red { border-color: rgba(201,64,64,0.4); background: rgba(201,64,64,0.06); }
+    .impact-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--red); line-height: 1; }
+    .impact-lbl { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+
+    /* GOALS */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .goals-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .goals-box h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--red); margin-bottom: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+    .goal-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .goal-item:last-child { border-bottom: none; }
+    .goal-check {
+      width: 20px; height: 20px;
+      background: rgba(80,200,120,0.15);
+      border: 1px solid rgba(80,200,120,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      font-size: 0.65rem; color: #50c878;
+    }
+    .goal-text { color: var(--muted2); line-height: 1.5; }
+
+    /* EVENTS */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .event-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-4px); }
+    .event-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      height: 200px;
+    }
+    .event-photos.single { grid-template-columns: 1fr; }
+    .event-photo {
+      overflow: hidden;
+      background: var(--dark3);
+    }
+    .event-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .event-body { padding: 1.25rem 1.5rem; }
+    .event-tag {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--red); border: 1px solid rgba(201,64,64,0.3);
+      padding: 0.2rem 0.6rem; border-radius: 3px;
+      margin-bottom: 0.6rem;
+    }
+    .event-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .event-hours {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--red); margin-bottom: 0.6rem;
+    }
+    .event-desc { font-size: 0.85rem; color: var(--muted2); line-height: 1.65; }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    @media(max-width: 768px) {
+      .impact-grid { grid-template-columns: repeat(3, 1fr); }
+      .goals-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+      .section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About FIRST</a></li>
+      <li><a href="season.html">Season</a></li>
+      <li><a href="robot.html">Robot</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="outreach.html" class="active">Outreach</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a>
+    <a href="robot.html">Robot</a>
+    <a href="team.html">Team</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Community</div>
+      <h1>Outreach</h1>
+      <div class="divider-red"></div>
+      <p>We believe robotics belongs to everyone. Here's how we're spreading STEM excitement in our community this season.</p>
+    </div>
+  </div>
+
+  <!-- IMPACT STATS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">This Season</div>
+      <h2 class="section-title">Our Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-card red">
+          <div class="impact-num">184</div>
+          <div class="impact-lbl">Hours Coaching FLL</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">33</div>
+          <div class="impact-lbl">Hours — Robotics at School</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">6</div>
+          <div class="impact-lbl">Hours — Back to School FIRST</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASON GOALS -->
+  <section class="section" style="background: var(--dark2);">
+    <div class="container">
+      <div class="section-label">Progress</div>
+      <h2 class="section-title">Season Goals</h2>
+      <p class="section-sub">Every goal from our season start and our improved targets — all completed.</p>
+
+      <div class="goals-grid">
+
+        <!-- SEASON START GOALS -->
+        <div class="goals-box">
+          <h3>🎯 Season Start Goals</h3>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for autonomous</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 3 outreach events</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Compete consistently with human player</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score at least 9 artifacts per game</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 10 in the league</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Shoot consistently</div></div>
+        </div>
+
+        <!-- IMPROVED GOALS -->
+        <div class="goals-box">
+          <h3>🚀 Improved Goals</h3>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for auto in both small and large launch zone</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 8 different outreach events</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Build an efficient intake system</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score more than 12 artifacts per game</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 5</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add short and long range shooting</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add vision to the robot</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add spindex</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Become proficient in coding Java</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add color sensor to the robot</div></div>
+          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Learn modeling and 3D printing</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTREACH EVENTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Events</div>
+      <h2 class="section-title">What We Did</h2>
+      <p class="section-sub">A look at the outreach events we ran and participated in this season.</p>
+
+      <div class="events-grid">
+
+        <!-- WALNUT HILLS -->
+        <div class="event-card">
+          <div class="event-photos">
+            <div class="event-photo"><img src="outreach1.png" alt="Walnut Hills Elementary presentation"></div>
+            <div class="event-photo"><img src="outreach2.png" alt="Walnut Hills Elementary robot demo"></div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">School Visit</span>
+            <div class="event-title">Walnut Hills Elementary</div>
+            <div class="event-hours">⏱ Robotics at School · 33 hrs</div>
+            <div class="event-desc">We visited Walnut Hills Elementary to introduce students to FTC robotics — presenting our robot, explaining how it works, and inspiring the next generation of engineers.</div>
+          </div>
+        </div>
+
+        <!-- COACHING #26808 -->
+        <div class="event-card">
+          <div class="event-photos">
+            <div class="event-photo"><img src="outreach3.png" alt="Coaching FLL team"></div>
+            <div class="event-photo"><img src="outreach4.png" alt="Coaching FLL team hands on"></div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">FLL Coaching</span>
+            <div class="event-title">Coaching Team #26808</div>
+            <div class="event-hours">⏱ 184 hours</div>
+            <div class="event-desc">We mentored and coached FLL Team #26808, helping younger students learn to build and program robots, develop their engineering notebook, and prepare for competition.</div>
+          </div>
+        </div>
+
+        <!-- BACK TO SCHOOL -->
+        <div class="event-card">
+          <div class="event-photos single">
+            <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🎒</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">FIRST Event</span>
+            <div class="event-title">Back to School FIRST</div>
+            <div class="event-hours">⏱ 6 hours</div>
+            <div class="event-desc">We participated in the Back to School FIRST event, helping introduce new families and students to the world of FIRST robotics programs at the start of the season.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
