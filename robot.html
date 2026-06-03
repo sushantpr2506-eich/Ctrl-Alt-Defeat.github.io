@@ -11,97 +11,67 @@
       background: var(--dark2);
       border-bottom: 1px solid var(--border);
     }
-    .page-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      letter-spacing: 2px; line-height: 1;
-    }
-    .page-hero p {
-      color: var(--muted2); font-size: 1.05rem;
-      max-width: 560px; margin-top: 1rem;
-    }
-    .divider-red {
-      width: 56px; height: 3px;
-      background: var(--red); border-radius: 2px;
-      margin: 1.25rem 0;
-    }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: 2px; line-height: 1; }
+    .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
+    .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
-    /* ── ROBOT HERO ── */
+    /* ── MAIN ROBOT ── */
     .robot-hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 5rem 2.5rem;
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 5rem 2.5rem;
+      background: var(--dark); position: relative; overflow: hidden;
     }
     .robot-hero::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(201,64,64,0.1) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .robot-photo-wrap {
-      position: relative;
-      width: 500px;
-      max-width: 100%;
-      margin-bottom: 3.5rem;
-      z-index: 1;
-    }
+    .robot-photo-wrap { position: relative; width: 520px; max-width: 100%; margin-bottom: 3.5rem; z-index: 1; }
     .robot-photo-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: -24px; left: 10%; right: 10%;
-      height: 40px;
-      background: rgba(201,64,64,0.2);
-      filter: blur(20px);
-      border-radius: 50%;
+      content: ''; position: absolute; bottom: -24px; left: 10%; right: 10%;
+      height: 40px; background: rgba(201,64,64,0.2);
+      filter: blur(20px); border-radius: 50%;
     }
-
     .robot-photo-box {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: 18px;
-      background: var(--card);
-      border: 1px solid rgba(201,64,64,0.25);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%; aspect-ratio: 4/3; border-radius: 18px;
+      background: var(--card); border: 1px solid rgba(201,64,64,0.25);
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
     }
-    .robot-photo-box img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .robot-placeholder {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0.75rem; color: var(--muted);
-    }
+    .robot-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+    .robot-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: var(--muted); }
     .robot-placeholder .ico { font-size: 5rem; opacity: 0.2; }
     .robot-placeholder p { font-size: 0.85rem; line-height: 1.6; }
-
-    .robot-text {
-      max-width: 700px;
-      z-index: 1;
-    }
-    .robot-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
+    .robot-text { max-width: 700px; z-index: 1; }
+    .robot-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 2px; margin-bottom: 0.5rem; }
     .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
-    .robot-text p {
-      color: var(--muted2);
-      font-size: 1.05rem;
-      line-height: 1.85;
-      margin-bottom: 1rem;
-    }
+    .robot-text p { color: var(--muted2); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
 
-    /* ── FOOTER ── */
+    /* ── STATS ── */
+    .stats-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stat-card { text-align: center; padding: 1rem; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--red); line-height: 1; }
+    .stat-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+
+    /* ── SUBSYSTEMS ── */
+    .subsystems-section { padding: 5rem 2.5rem; background: var(--dark); }
+    .subsystem { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-bottom: 5rem; }
+    .subsystem:last-child { margin-bottom: 0; }
+    .subsystem.reverse { direction: rtl; }
+    .subsystem.reverse > * { direction: ltr; }
+    .sub-img { width: 100%; aspect-ratio: 4/3; border-radius: 14px; background: var(--card); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .sub-img img { width: 100%; height: 100%; object-fit: cover; }
+    .sub-img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--muted); text-align: center; padding: 1rem; }
+    .sub-img-placeholder .ico { font-size: 3rem; opacity: 0.25; }
+    .sub-img-placeholder p { font-size: 0.8rem; line-height: 1.6; }
+    .sub-tag { display: inline-block; background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.3); color: var(--red); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
+    .sub-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
+    .sub-desc { color: var(--muted2); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    .sub-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sub-bullets li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--muted2); }
+    .sub-bullets li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
     footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
@@ -114,7 +84,10 @@
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
     @media(max-width: 768px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .subsystem, .subsystem.reverse { grid-template-columns: 1fr; direction: ltr; }
       .robot-hero { padding: 3.5rem 1.25rem; }
+      .subsystems-section { padding: 4rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
     }
   </style>
@@ -122,7 +95,6 @@
 <body>
 <div class="page">
 
-  <!-- NAV -->
   <nav>
     <a class="nav-brand" href="index.html">
       <img class="nav-logo" src="logo.png" alt="Logo">
@@ -163,31 +135,105 @@
     </div>
   </div>
 
-  <!-- ROBOT SECTION -->
+  <!-- MAIN ROBOT PHOTO + DESCRIPTION -->
   <div class="robot-hero">
     <div class="robot-photo-wrap">
       <div class="robot-photo-box">
-        <!-- ✏️ WHEN YOU HAVE THE PHOTO:
-             Delete everything inside robot-photo-box
-             and replace with: <img src="robot.jpg" alt="Our Robot"> -->
+        <!-- ✏️ Replace with: <img src="robot.jpg" alt="Our Robot"> -->
         <div class="robot-placeholder">
           <div class="ico">🤖</div>
-          <p>Your robot photo goes here<br/>
-          Replace with: &lt;img src="robot.jpg" alt="Our Robot"&gt;</p>
+          <p>Add your main robot photo here<br/>
+          <code style="font-size:0.75rem; background:rgba(255,255,255,0.05); padding:0.2rem 0.4rem; border-radius:3px;">&lt;img src="robot.jpg" alt="Our Robot"&gt;</code></p>
         </div>
       </div>
     </div>
-
     <div class="robot-text">
       <h2>Our Robot</h2>
       <div class="divider-red"></div>
-      <!-- ✏️ REPLACE these paragraphs with your real robot description -->
-      <p>Write about your robot here — what it does, what makes it effective for the DECODE season, and what design decisions you're most proud of.</p>
-      <p>Add a second paragraph here if you want — talk about autonomous capabilities, your programming approach, or how the robot improved through testing and iteration over the season.</p>
+      <!-- ✏️ Replace with your robot description -->
+      <p>Write your overall robot description here — what it does, how it performs in DECODE, and what makes it stand out. Talk about the journey from your early design to where it is now.</p>
+      <p>Add a second paragraph about your programming, autonomous strategy, or any technical highlights you're proud of this season.</p>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- STATS BAR -->
+  <div class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-card">
+        <div class="stat-num">17</div>
+        <div class="stat-lbl">Avg. Artifacts / Match</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Top 5</div>
+        <div class="stat-lbl">League Finish</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Java</div>
+        <div class="stat-lbl">Programming Language</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3D</div>
+        <div class="stat-lbl">Printed Custom Parts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO SUBSECTION PHOTOS -->
+  <div class="subsystems-section">
+    <div class="container">
+      <div class="section-label">Mechanisms</div>
+      <h2 class="section-title">A Closer Look</h2>
+
+      <!-- INTAKE -->
+      <div class="subsystem" style="margin-top: 3rem;">
+        <div class="sub-img">
+          <!-- ✏️ Replace with: <img src="robot_intake.png" alt="Intake System"> -->
+          <div class="sub-img-placeholder">
+            <div class="ico">📸</div>
+            <p>Intake photo here<br/>&lt;img src="robot_intake.png"&gt;</p>
+          </div>
+        </div>
+        <div>
+          <span class="sub-tag">Mechanism 01</span>
+          <div class="sub-title">Intake System</div>
+          <div class="sub-desc">Our intake collects game elements into the robot efficiently and consistently. The roller intake is designed for fast and reliable ball collection with a wide opening to handle slightly misaligned pickups.</div>
+          <ul class="sub-bullets">
+            <li>Roller intake designed for fast and reliable ball collection</li>
+            <li>Funnel guides balls smoothly into the robot</li>
+            <li>Wide intake opening allows successful pickups even when slightly misaligned</li>
+            <li>Prioritizes consistency to prevent any over capacity issues</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CURRENT ROBOT / IMPROVEMENT -->
+      <div class="subsystem reverse">
+        <div class="sub-img">
+          <!-- ✏️ Replace with: <img src="robot_new.jpg" alt="Current Robot"> -->
+          <div class="sub-img-placeholder">
+            <div class="ico">📸</div>
+            <p>Current robot photo here<br/>&lt;img src="robot_new.jpg"&gt;</p>
+          </div>
+        </div>
+        <div>
+          <span class="sub-tag">Mechanism 02</span>
+          <!-- ✏️ Change this title to whatever this photo is explaining -->
+          <div class="sub-title">Current Design</div>
+          <!-- ✏️ Replace with your explanation of this photo / mechanism -->
+          <div class="sub-desc">Describe what this photo is showing — a specific mechanism, an improvement over the old robot, or a key design decision. What problem did it solve and how does it help in matches?</div>
+          <ul class="sub-bullets">
+            <!-- ✏️ Replace these with real bullet points about this mechanism -->
+            <li>Custom design enhanced for our game strategy</li>
+            <li>Faster cycle times due to improved intake</li>
+            <li>Built using lessons learned from our early season starterbot</li>
+            <li>Averaging 17 balls per match in TeleOp</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <footer>
     <div class="footer-inner">
       <div>
