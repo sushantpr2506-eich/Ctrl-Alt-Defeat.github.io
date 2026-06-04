@@ -15,6 +15,7 @@
     .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
     .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
+    /* ── MAIN ROBOT ── */
     .robot-hero {
       display: flex; flex-direction: column; align-items: center;
       text-align: center; padding: 5rem 2.5rem;
@@ -42,19 +43,40 @@
     .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
     .robot-text p { color: var(--muted2); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
 
+    /* ── STATS ── */
     .stats-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     .stat-card { text-align: center; padding: 1rem; }
     .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--red); line-height: 1; }
     .stat-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
 
-    .subsystems-section { padding: 5rem 2.5rem; background: var(--dark); }
-    .subsystem { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-bottom: 5rem; }
-    .subsystem:last-child { margin-bottom: 0; }
-    .subsystem.reverse { direction: rtl; }
-    .subsystem.reverse > * { direction: ltr; }
-    .sub-img { width: 100%; aspect-ratio: 4/3; border-radius: 14px; background: var(--card); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .sub-img img { width: 100%; height: 100%; object-fit: cover; }
+    /* ── COMPARISON ── */
+    .comparison-section { padding: 5rem 2.5rem; background: var(--dark2); }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .comp-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .comp-card:hover { transform: translateY(-4px); }
+    .comp-card.new { border-color: rgba(201,64,64,0.35); }
+    .comp-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--dark3); display: flex; align-items: center; justify-content: center; }
+    .comp-img img { width: 100%; height: 100%; object-fit: cover; }
+    .comp-img-placeholder { color: var(--muted); font-size: 0.82rem; text-align: center; padding: 1rem; line-height: 1.6; }
+    .comp-body { padding: 1.75rem; }
+    .comp-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; margin-bottom: 0.75rem; }
+    .comp-badge.old { background: rgba(255,255,255,0.08); color: var(--muted2); }
+    .comp-badge.new { background: var(--red); color: #fff; }
+    .comp-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 1.25rem; }
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .pros h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #50c878; margin-bottom: 0.6rem; }
+    .cons h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e05555; margin-bottom: 0.6rem; }
+    .pros ul, .cons ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pros ul li, .cons ul li { font-size: 0.82rem; color: var(--muted2); line-height: 1.5; display: flex; gap: 0.4rem; align-items: flex-start; }
+    .pros ul li::before { content: '+'; color: #50c878; font-weight: 700; flex-shrink: 0; }
+    .cons ul li::before { content: '−'; color: #e05555; font-weight: 700; flex-shrink: 0; }
+
+    /* ── INTAKE ── */
+    .intake-section { padding: 5rem 2.5rem; background: var(--dark); }
+    .intake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 3rem; }
+    .intake-img { width: 100%; aspect-ratio: 4/3; border-radius: 14px; background: var(--card); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .intake-img img { width: 100%; height: 100%; object-fit: cover; }
     .sub-tag { display: inline-block; background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.3); color: var(--red); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
     .sub-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
     .sub-desc { color: var(--muted2); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; }
@@ -62,6 +84,7 @@
     .sub-bullets li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--muted2); }
     .sub-bullets li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
+    /* FOOTER */
     footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
@@ -75,9 +98,10 @@
 
     @media(max-width: 768px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .subsystem, .subsystem.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .intake-grid { grid-template-columns: 1fr; }
       .robot-hero { padding: 3.5rem 1.25rem; }
-      .subsystems-section { padding: 4rem 1.25rem; }
+      .comparison-section, .intake-section { padding: 4rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
     }
   </style>
@@ -115,6 +139,7 @@
     <a href="contact.html">Contact</a>
   </div>
 
+  <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="container">
       <div class="section-label">Engineering</div>
@@ -124,6 +149,7 @@
     </div>
   </div>
 
+  <!-- MAIN ROBOT + DESCRIPTION -->
   <div class="robot-hero">
     <div class="robot-photo-wrap">
       <div class="robot-photo-box">
@@ -139,6 +165,7 @@
     </div>
   </div>
 
+  <!-- STATS -->
   <div class="stats-section">
     <div class="stats-inner">
       <div class="stat-card">
@@ -160,14 +187,85 @@
     </div>
   </div>
 
-  <div class="subsystems-section">
+  <!-- OLD VS NEW COMPARISON -->
+  <div class="comparison-section">
     <div class="container">
-      <div class="section-label">Mechanisms</div>
-      <h2 class="section-title">A Closer Look</h2>
+      <div class="section-label">Evolution</div>
+      <h2 class="section-title">Old Robot vs New Robot</h2>
+      <p class="section-sub">A comparison of our early season robot and our current design.</p>
 
-      <!-- INTAKE -->
-      <div class="subsystem" style="margin-top: 3rem;">
-        <div class="sub-img">
+      <div class="comparison-grid">
+
+        <!-- OLD ROBOT -->
+        <div class="comp-card">
+          <div class="comp-img">
+            <!-- ✏️ Replace with: <img src="robot_old.jpg" alt="Old Robot"> -->
+            <div class="comp-img-placeholder">Add old robot photo<br/>&lt;img src="robot_old.jpg"&gt;</div>
+          </div>
+          <div class="comp-body">
+            <span class="comp-badge old">Early Season</span>
+            <div class="comp-title">Starterbot</div>
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Pros</h4>
+                <ul>
+                  <li>Simple goBILDA starterbot and chassis</li>
+                  <li>Curved plastic guide improved shooting accuracy</li>
+                  <li>Strong foundation for early season testing</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Cons</h4>
+                <ul>
+                  <li>Limited customization</li>
+                  <li>3 max ball auto due to human player only</li>
+                  <li>Harder to maintain performance as competition increased</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW ROBOT -->
+        <div class="comp-card new">
+          <div class="comp-img">
+            <img src="robot_new.jpg" alt="Current Robot">
+          </div>
+          <div class="comp-body">
+            <span class="comp-badge new">Current Design ✦</span>
+            <div class="comp-title">Season Robot</div>
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Pros</h4>
+                <ul>
+                  <li>Custom design enhanced for our game strategy</li>
+                  <li>Faster cycle times due to improved intake</li>
+                  <li>Built using lessons learned from the starterbot</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Cons</h4>
+                <ul>
+                  <li>More testing needed to reach peak consistency</li>
+                  <li>Higher power requires more frequent battery changes</li>
+                  <li>Increased mechanical complexity vs starterbot</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- INTAKE SYSTEM -->
+  <div class="intake-section">
+    <div class="container">
+      <div class="section-label">Mechanism</div>
+      <h2 class="section-title">Intake System</h2>
+      <div class="intake-grid">
+        <div class="intake-img">
           <img src="robot_intake.jpg" alt="Intake System">
         </div>
         <div>
@@ -182,28 +280,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- SECOND MECHANISM -->
-      <div class="subsystem reverse">
-        <div class="sub-img">
-          <img src="robot_new.jpg" alt="Current Robot">
-        </div>
-        <div>
-          <span class="sub-tag">Mechanism 02</span>
-          <!-- ✏️ Change this title to what this photo is showing -->
-          <div class="sub-title">Current Design</div>
-          <!-- ✏️ Write your description for this photo -->
-          <div class="sub-desc">Our robot's electronics and control system are mounted centrally on the frame, keeping wiring organized and accessible for quick fixes between matches. Components are carefully positioned to maintain balance and allow easy access during repairs or adjustments.</div>
-          <ul class="sub-bullets">
-            <!-- ✏️ Replace with real bullet points -->
-            <li>Custom design enhanced for our game strategy</li>
-            <li>Faster cycle times due to improved intake</li>
-            <li>Built using lessons learned from our early season starterbot</li>
-            <li>Averaging 17 balls per match in TeleOp</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
 
