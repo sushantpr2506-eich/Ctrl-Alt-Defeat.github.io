@@ -35,9 +35,9 @@
     .robot-photo-box {
       width: 100%; aspect-ratio: 4/3; border-radius: 18px;
       background: var(--card); border: 1px solid rgba(201,64,64,0.25);
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
     }
-    .robot-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+    .robot-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .robot-text { max-width: 700px; z-index: 1; }
     .robot-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 2px; margin-bottom: 0.5rem; }
     .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
@@ -56,9 +56,11 @@
     .comp-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
     .comp-card:hover { transform: translateY(-4px); }
     .comp-card.new { border-color: rgba(201,64,64,0.35); }
-    .comp-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--dark3); display: flex; align-items: center; justify-content: center; }
-    .comp-img img { width: 100%; height: 100%; object-fit: cover; }
-    .comp-img-placeholder { color: var(--muted); font-size: 0.82rem; text-align: center; padding: 1rem; line-height: 1.6; }
+    .comp-img {
+      width: 100%; aspect-ratio: 1/1;
+      overflow: hidden; background: var(--dark3);
+    }
+    .comp-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .comp-body { padding: 1.75rem; }
     .comp-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; margin-bottom: 0.75rem; }
     .comp-badge.old { background: rgba(255,255,255,0.08); color: var(--muted2); }
@@ -75,8 +77,12 @@
     /* ── INTAKE ── */
     .intake-section { padding: 5rem 2.5rem; background: var(--dark); }
     .intake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 3rem; }
-    .intake-img { width: 100%; aspect-ratio: 4/3; border-radius: 14px; background: var(--card); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .intake-img img { width: 100%; height: 100%; object-fit: cover; }
+    .intake-img {
+      width: 100%; aspect-ratio: 1/1;
+      border-radius: 14px; background: var(--card);
+      border: 1px solid var(--border); overflow: hidden;
+    }
+    .intake-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .sub-tag { display: inline-block; background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.3); color: var(--red); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
     .sub-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
     .sub-desc { color: var(--muted2); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; }
@@ -139,7 +145,6 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="container">
       <div class="section-label">Engineering</div>
@@ -150,6 +155,7 @@
   </div>
 
   <!-- MAIN ROBOT + DESCRIPTION -->
+  <!-- robot.jpg = Image 4, front view showing REV Control Hub and camera -->
   <div class="robot-hero">
     <div class="robot-photo-wrap">
       <div class="robot-photo-box">
@@ -188,6 +194,7 @@
   </div>
 
   <!-- OLD VS NEW COMPARISON -->
+  <!-- robot_old.jpg = Image 2 (early build), robot_new.jpg = Image 3 (current side view) -->
   <div class="comparison-section">
     <div class="container">
       <div class="section-label">Evolution</div>
@@ -195,11 +202,9 @@
       <p class="section-sub">A comparison of our early season robot and our current design.</p>
 
       <div class="comparison-grid">
-
-        <!-- OLD ROBOT -->
         <div class="comp-card">
           <div class="comp-img">
-            <div class="comp-img-placeholder">Add old robot photo<br/>&lt;img src="robot_old.jpg"&gt;</div>
+            <img src="robot_old.jpg" alt="Old Robot">
           </div>
           <div class="comp-body">
             <span class="comp-badge old">Early Season</span>
@@ -225,7 +230,6 @@
           </div>
         </div>
 
-        <!-- NEW ROBOT -->
         <div class="comp-card new">
           <div class="comp-img">
             <img src="robot_new.jpg" alt="Current Robot">
@@ -253,12 +257,12 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
   <!-- INTAKE SYSTEM -->
+  <!-- robot_intake.jpg = Image 1 (roller/spindex front view) -->
   <div class="intake-section">
     <div class="container">
       <div class="section-label">Mechanism</div>
@@ -270,7 +274,7 @@
         <div>
           <span class="sub-tag">Mechanism 01</span>
           <div class="sub-title">Intake System</div>
-          <div class="sub-desc">Our intake collects game elements into the robot efficiently and consistently. The roller intake is designed for fast and reliable ball collection with a wide opening to handle slightly misaligned pickups.</div>
+          <div class="sub-desc">Our intake system features a roller mechanism mounted at the front of the robot, paired with a funnel to guide balls smoothly into the robot. The compact design keeps the center of gravity low while allowing for fast and consistent ball collection during both autonomous and driver-controlled periods.</div>
           <ul class="sub-bullets">
             <li>Roller intake designed for fast and reliable ball collection</li>
             <li>Funnel guides balls smoothly into the robot</li>
