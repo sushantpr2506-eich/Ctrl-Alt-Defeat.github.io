@@ -3,91 +3,49 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Season | Ctrl-Alt-Defeat | FTC Team 31844</title>
+  <title>Our Seasons | Ctrl-Alt-Defeat #31844</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .season-hero {
-      min-height: calc(100vh - 64px);
-      display: flex;
-      align-items: center;
-      padding: 4rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(201,64,64,0.08) 0%, rgba(201,64,64,0.03) 100%);
+    .page-hero {
+      padding: 4rem 2.5rem 3rem;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
     }
-    .season-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 55% 55% at 75% 45%, rgba(201,64,64,0.12) 0%, transparent 65%),
-        linear-gradient(180deg, transparent 60%, rgba(15,17,23,0.6) 100%);
-      pointer-events: none;
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: 2px; line-height: 1; }
+    .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
+    .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
+
+    /* ── SEASON SECTIONS ── */
+    .season-era {
+      padding: 5rem 2.5rem;
+      background: var(--dark);
     }
-    .season-hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 64px 64px;
-      pointer-events: none;
-    }
-    .season-hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-    }
-    .season-hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(201,64,64,0.1);
-      border: 1px solid rgba(201,64,64,0.3);
-      border-radius: 100px;
-      padding: 0.3rem 1rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 2rem;
-    }
-    .season-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 10vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: 2px;
-      margin-bottom: 1.5rem;
-    }
-    .season-hero h1 .red {
-      color: var(--red);
-    }
-    .season-hero p {
-      font-size: 1.1rem;
-      color: var(--muted2);
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      line-height: 1.75;
+    .season-era:nth-child(even) {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
+    /* ── STATS ── */
     .season-stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
       margin-top: 3rem;
     }
     .season-stat-card {
-      background: rgba(201,64,64,0.08);
-      border: 1px solid rgba(201,64,64,0.2);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 1.75rem;
+      padding: 2rem;
       text-align: center;
     }
+    .season-stat-card.red { border-color: rgba(201,64,64,0.4); background: rgba(201,64,64,0.06); }
     .season-stat-card .stat-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: var(--red);
       line-height: 1;
-      margin-bottom: 0.5rem;
     }
     .season-stat-card .stat-lbl {
       font-size: 0.75rem;
@@ -95,72 +53,21 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--muted);
+      margin-top: 0.4rem;
     }
 
-    .season-era {
-      background: var(--dark2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .season-era:nth-child(even) {
-      background: var(--dark);
-    }
-
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .timeline-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.75rem;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--red);
-      border-radius: 10px 10px 0 0;
-    }
-    .timeline-item .month {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.5rem;
-    }
-    .timeline-item h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.5px;
-    }
-    .timeline-item p {
-      font-size: 0.9rem;
-      color: var(--muted2);
-      line-height: 1.65;
-    }
-
+    /* ── GOALS ── */
     .goals-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
     .goal-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
+      border-radius: 12px;
+      padding: 1.75rem;
       transition: border-color 0.2s, transform 0.2s;
     }
     .goal-item:hover {
@@ -174,31 +81,80 @@
     }
     .goal-item h4 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       letter-spacing: 0.5px;
     }
     .goal-item p {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--muted2);
       line-height: 1.6;
     }
 
-    @media (max-width: 768px) {
-      .season-hero {
-        padding: 3rem 1.25rem;
-      }
-      .season-stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .timeline-grid {
-        grid-template-columns: 1fr;
-      }
-      .goals-grid {
-        grid-template-columns: 1fr;
-      }
+    /* ── TIMELINE ── */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .timeline-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--red);
+      border-radius: 12px 12px 0 0;
+    }
+    .timeline-item .month {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-item h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+    .timeline-item p {
+      font-size: 0.88rem;
+      color: var(--muted2);
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    @media(max-width: 768px) {
+      .season-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .season-era { padding: 4rem 1.25rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
     }
   </style>
 </head>
@@ -233,63 +189,59 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <section class="season-hero">
-    <div class="season-hero-grid"></div>
-    <div class="season-hero-content">
-      <div class="season-hero-tag">Team #31844 · Season Archive</div>
-      <h1>Our <span class="red">Seasons</span></h1>
-      <p>From our inaugural year to DECODE 2025–26, we've grown as engineers, programmers, and teammates. Explore our journey.</p>
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">History Archive</div>
+      <h1>Our Seasons</h1>
+      <div class="divider-red"></div>
+      <p>From our milestone inaugural debut to our active performance optimizations, look through our historic team progression timeline.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="season-era section">
+  <section class="season-era">
     <div class="container">
       <div class="section-label">Last Season</div>
       <h2 class="section-title">Our Rookie Year</h2>
-      <div class="divider"></div>
-      <p class="section-sub">Our inaugural season was about learning, building, and proving ourselves. Here's how we performed.</p>
+      <p class="section-sub">Our inaugural season focused on learning layout dynamics, mastering fundamental build strategies, and developing strong competition metrics.</p>
 
       <div class="season-stats-grid">
         <div class="season-stat-card">
           <div class="stat-num"></div>
           <div class="stat-lbl">Total Matches</div>
         </div>
-
         <div class="season-stat-card">
           <div class="stat-num"></div>
           <div class="stat-lbl">Win–Loss Record</div>
         </div>
-
         <div class="season-stat-card">
           <div class="stat-num"></div>
           <div class="stat-lbl">Events Attended</div>
         </div>
-
         <div class="season-stat-card">
           <div class="stat-num"></div>
           <div class="stat-lbl">Awards Won</div>
         </div>
       </div>
 
-      <p style="color: var(--muted2); margin-top: 2.5rem; font-size: 0.95rem;">
+      <p style="color: var(--muted2); margin-top: 2.5rem; font-size: 0.95rem; line-height: 1.85;">
         </p>
     </div>
   </section>
 
-  <section class="season-era section">
+  <section class="season-era">
     <div class="container">
-      <div class="section-label">Current Season</div>
+      <div class="section-label">Current Campaign</div>
       <h2 class="section-title">DECODE 2025–26</h2>
-      <div class="divider"></div>
+      <p class="section-sub">Pushing past simple designs into high-speed autonomous runs, custom engineering solutions, and expanded community influence.</p>
       
-      <div style="margin-bottom: 3.5rem;">
+      <div style="margin-top: 3rem;">
         <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">The Challenge</h3>
-        <p class="section-sub" style="max-width: 100%;">
+        <p style="color: var(--muted2); font-size: 0.95rem; line-height: 1.8; max-width: 100%;">
           </p>
       </div>
 
-      <div style="margin-bottom: 2rem;">
-        <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Our Goals</h3>
+      <div style="margin-top: 4rem;">
+        <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Subteam Objectives</h3>
       </div>
       <div class="goals-grid">
         <div class="goal-item">
@@ -298,21 +250,18 @@
           <p>
             </p>
         </div>
-
         <div class="goal-item">
           <span class="goal-icon">💻</span>
           <h4>Programming</h4>
           <p>
             </p>
         </div>
-
         <div class="goal-item">
           <span class="goal-icon">🎯</span>
           <h4>Competition</h4>
           <p>
             </p>
         </div>
-
         <div class="goal-item">
           <span class="goal-icon">📈</span>
           <h4>Team Growth</h4>
@@ -321,48 +270,43 @@
         </div>
       </div>
 
-      <div style="margin-top: 4rem;">
-        <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Season Timeline</h3>
+      <div style="margin-top: 4.5rem;">
+        <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Campaign Timeline</h3>
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">September</div>
+          <h3>Kickoff &amp; Analysis</h3>
           <p>
             </p>
         </div>
-
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">October</div>
+          <h3>CAD &amp; Base Prototyping</h3>
           <p>
             </p>
         </div>
-
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">November</div>
+          <h3>Subassembly Intake Testing</h3>
           <p>
             </p>
         </div>
-
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">December</div>
+          <h3>Tournament Initial Deployment</h3>
           <p>
             </p>
         </div>
-
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">January</div>
+          <h3>System Optimization</h3>
           <p>
             </p>
         </div>
-
         <div class="timeline-item">
-          <div class="month"></div>
-          <h3></h3>
+          <div class="month">Feb / March</div>
+          <h3>Championship Series</h3>
           <p>
             </p>
         </div>
@@ -383,7 +327,6 @@
       <div>
         <div class="footer-col-title">Pages</div>
         <div class="footer-links">
-          <a href="index.html">Home</a>
           <a href="about.html">About FIRST</a>
           <a href="season.html">Season Info</a>
           <a href="robot.html">Our Robot</a>
