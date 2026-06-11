@@ -18,9 +18,10 @@
     /* ── SEASON SECTIONS ── */
     .season-era {
       padding: 5rem 2.5rem;
-      background: var(--dark);
+      background: var(--dark); /* Force the first content block to start as pure black */
     }
-    .season-era:nth-child(even) {
+    /* Alternates every other section to the lighter background with borders */
+    .season-era.alt-bg {
       background: var(--dark2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -228,7 +229,7 @@
     </div>
   </section>
 
-  <section class="season-era">
+  <section class="season-era alt-bg">
     <div class="container">
       <div class="section-label">Current Campaign</div>
       <h2 class="section-title">DECODE 2025–26</h2>
