@@ -21,12 +21,47 @@
       background: var(--dark); /* Force the rookie content block to start as pure black */
     }
 
-    /* ── STATS GRID (CENTERED & FIXED FOR 3 CARDS) ── */
+    /* ── NEW CENTRAL RANKING SPOT ── */
+    .ranking-showcase {
+      text-align: center;
+      margin: 2.5rem auto;
+      max-width: 320px;
+      background: rgba(201, 64, 64, 0.03);
+      border: 1px dashed rgba(201, 64, 64, 0.3);
+      padding: 1.5rem;
+      border-radius: 12px;
+      position: relative;
+    }
+    .ranking-showcase .rank-lbl {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .ranking-showcase .rank-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--light);
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(201, 64, 64, 0.2);
+    }
+    .ranking-showcase .rank-num span {
+      color: var(--red);
+    }
+    .ranking-showcase .rank-context {
+      font-size: 0.8rem;
+      color: var(--muted2);
+      margin-top: 0.25rem;
+    }
+
+    /* ── STATS GRID ── */
     .season-stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
@@ -37,65 +72,18 @@
       border-radius: 10px;
       padding: 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle mechanical corner accent */
+    .season-stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 4px;
+      background: var(--red);
     }
     .season-stat-card .stat-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
-      color: var(--red);
-      line-height: 1;
-    }
-    .season-stat-card .stat-lbl {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.4rem;
-    }
-
-    @media(max-width: 768px) {
-      .season-stats-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .season-era { padding: 4rem 1.25rem; }
-      .page-hero { padding: 3rem 1.25rem 2rem; }
-    }
-  </style>
-</head>
-<body>
-<div class="page">
-
-  <nav>
-    <a class="nav-brand" href="index.html">
-      <img class="nav-logo" src="logo.png" alt="Logo">
-      <span class="nav-name">Ctrl-Alt-Defeat</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About FIRST</a></li>
-      <li><a href="season.html" class="active">Season</a></li>
-      <li><a href="robot.html">Robot</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="outreach.html">Outreach</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="mobile-menu" id="mob">
-    <a href="index.html">Home</a>
-    <a href="about.html">About FIRST</a>
-    <a href="season.html">Season</a>
-    <a href="robot.html">Robot</a>
-    <a href="team.html">Team</a>
-    <a href="outreach.html">Outreach</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <div class="page-hero">
-    <div class="container">
-      <div class="section-label">History Archive</div>
-      <h1>Our Seasons</h1>
-      <div class="divider-red"></div>
-      <p>From our milestone inaugural debut to our active performance optimizations, look through our historic team progression timeline.</p>
-    </div>
-  </div>
