@@ -18,7 +18,7 @@
     /* ── SEASON SECTIONS ── */
     .season-era {
       padding: 5rem 2.5rem;
-      background: var(--dark); /* Force the rookie content block to start as pure black */
+      background: var(--dark); 
     }
 
     /* ── NEW CENTRAL RANKING SPOT ── */
@@ -30,7 +30,6 @@
       border: 1px dashed rgba(201, 64, 64, 0.3);
       padding: 1.5rem;
       border-radius: 12px;
-      position: relative;
     }
     .ranking-showcase .rank-lbl {
       font-size: 0.7rem;
@@ -45,7 +44,6 @@
       font-size: 4rem;
       color: var(--light);
       line-height: 1;
-      text-shadow: 0 0 10px rgba(201, 64, 64, 0.2);
     }
     .ranking-showcase .rank-num span {
       color: var(--red);
@@ -72,18 +70,134 @@
       border-radius: 10px;
       padding: 2rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Subtle mechanical corner accent */
-    .season-stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 4px;
-      background: var(--red);
     }
     .season-stat-card .stat-num {
       font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--light);
+      line-height: 1;
+    }
+    .season-stat-card .stat-lbl {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    @media(max-width: 768px) {
+      .season-stats-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .season-era { padding: 4rem 1.25rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Logo">
+      <span class="nav-name">Ctrl-Alt-Defeat</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About FIRST</a></li>
+      <li><a href="season.html" class="active">Season</a></li>
+      <li><a href="robot.html">Robot</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="about.html">About FIRST</a>
+    <a href="season.html">Season</a>
+    <a href="robot.html">Robot</a>
+    <a href="team.html">Team</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">History Archive</div>
+      <h1>Our Seasons</h1>
+      <div class="divider-red"></div>
+      <p>Track our performance metrics, design iterations, and match records across each historical FIRST Tech Challenge campaign.</p>
+    </div>
+  </div>
+
+  <section class="season-era">
+    <div class="container">
+      <div class="section-label">Last Season</div>
+      <h2 class="section-title">Our Rookie Year</h2>
+      <p class="section-sub" style="max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; color: var(--muted2);">
+        Our inaugural competitive season focused on building an ultra-reliable drivetrain layout, mastering fundamental control strategies, and scaling our tournament data metrics.
+      </p>
+
+      <div class="ranking-showcase">
+        <div class="rank-lbl">Final Placement</div>
+        <div class="rank-num"><span>#</span>--</div> 
+        <div class="rank-context">State Championship Competitor</div>
+      </div>
+
+      <div class="season-stats-grid">
+        <div class="season-stat-card">
+          <div class="stat-num">30</div>
+          <div class="stat-lbl">Total Matches</div>
+        </div>
+        <div class="season-stat-card">
+          <div class="stat-num" style="color: var(--red);">22-8</div>
+          <div class="stat-lbl">Win–Loss Record</div>
+        </div>
+        <div class="season-stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-lbl">Events Attended</div>
+        </div>
+      </div>
+
+      <p style="color: var(--muted2); margin-top: 3rem; font-size: 0.95rem; line-height: 1.85; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+        Over the course of 30 high-intensity match rounds, our team adapted swiftly to alliance strategies, mechanical stressors, and structural field repairs. Winning 22 matches out of our 6 tournament appearances proved the consistency of our driver practice runs and autonomous execution paths.
+      </p>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid var(--border); padding: 2.5rem;">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.png" alt="Logo">
+          <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
+        </div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="about.html">About FIRST</a>
+          <a href="season.html">Season Info</a>
+          <a href="robot.html">Our Robot</a>
+          <a href="team.html">Meet the Team</a>
+          <a href="outreach.html">Outreach</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:ctrlaltdefeat29@gmail.com">ctrlaltdefeat29@gmail.com</a>
+          <a href="contact.html">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
