@@ -21,37 +21,42 @@
       background: var(--dark); 
     }
 
-    /* ── NEW CENTRAL RANKING SPOT ── */
+    /* ── MASSIVE CENTRAL RANKING SPOT ── */
     .ranking-showcase {
       text-align: center;
-      margin: 2.5rem auto;
-      max-width: 320px;
-      background: rgba(201, 64, 64, 0.03);
-      border: 1px dashed rgba(201, 64, 64, 0.3);
-      padding: 1.5rem;
-      border-radius: 12px;
+      margin: 3.5rem auto;
+      max-width: 460px; /* Made the container wider */
+      background: rgba(201, 64, 64, 0.04);
+      border: 2px solid rgba(201, 64, 64, 0.4); /* Made the border thicker and solid */
+      padding: 2.5rem 2rem; /* Added way more breathing room */
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(201, 64, 64, 0.1); /* Added a glowing tech aura */
     }
     .ranking-showcase .rank-lbl {
-      font-size: 0.7rem;
+      font-size: 0.85rem; /* Upgraded text size */
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px; /* Stretched it out for a pro look */
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
     }
     .ranking-showcase .rank-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
+      font-size: 6.5rem; /* Massively blew up the number size */
       color: var(--light);
-      line-height: 1;
+      line-height: 0.9;
+      margin-bottom: 0.5rem;
     }
     .ranking-showcase .rank-num span {
       color: var(--red);
     }
     .ranking-showcase .rank-context {
-      font-size: 0.8rem;
-      color: var(--muted2);
-      margin-top: 0.25rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; /* Bigger title description */
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--light);
+      text-transform: uppercase;
     }
 
     /* ── STATS GRID ── */
@@ -59,7 +64,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      margin-top: 2rem;
+      margin-top: 3.5rem;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
@@ -88,6 +93,8 @@
 
     @media(max-width: 768px) {
       .season-stats-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .ranking-showcase { max-width: 90%; padding: 2rem 1rem; }
+      .ranking-showcase .rank-num { font-size: 4.5rem; }
       .season-era { padding: 4rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
     }
@@ -96,6 +103,7 @@
 <body>
 <div class="page">
 
+  <!-- NAVIGATION -->
   <nav>
     <a class="nav-brand" href="index.html">
       <img class="nav-logo" src="logo.png" alt="Logo">
@@ -124,6 +132,7 @@
     <a href="contact.html">Contact</a>
   </div>
 
+  <!-- HERO HEADER -->
   <div class="page-hero">
     <div class="container">
       <div class="section-label">History Archive</div>
@@ -133,6 +142,7 @@
     </div>
   </div>
 
+  <!-- ROOKIE SEASON (LAST YEAR) -->
   <section class="season-era">
     <div class="container">
       <div class="section-label">Last Season</div>
@@ -141,12 +151,14 @@
         Our inaugural competitive season focused on building an ultra-reliable drivetrain layout, mastering fundamental control strategies, and scaling our tournament data metrics.
       </p>
 
+      <!-- MASSIVE CENTRAL RANKING DISPLAY -->
       <div class="ranking-showcase">
         <div class="rank-lbl">Final Placement</div>
-        <div class="rank-num"><span>#</span>--</div> 
+        <div class="rank-num"><span>#</span>--</div> <!-- Drop your actual rookie placement number right where the '--' is! -->
         <div class="rank-context">State Championship Competitor</div>
       </div>
 
+      <!-- HARDCODED METRICS GRID -->
       <div class="season-stats-grid">
         <div class="season-stat-card">
           <div class="stat-num">30</div>
@@ -162,12 +174,13 @@
         </div>
       </div>
 
-      <p style="color: var(--muted2); margin-top: 3rem; font-size: 0.95rem; line-height: 1.85; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+      <p style="color: var(--muted2); margin-top: 3.5rem; font-size: 0.95rem; line-height: 1.85; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
         Over the course of 30 high-intensity match rounds, our team adapted swiftly to alliance strategies, mechanical stressors, and structural field repairs. Winning 22 matches out of our 6 tournament appearances proved the consistency of our driver practice runs and autonomous execution paths.
       </p>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer style="border-top: 1px solid var(--border); padding: 2.5rem;">
     <div class="footer-inner">
       <div>
