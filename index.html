@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ctrl-Alt-Defeat | FTC Team 31844</title>
   <link rel="stylesheet" href="style.css"/>
+  <!-- Futuristic Google Font Import -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <style>
     .hero {
       min-height: calc(100vh - 64px);
@@ -26,7 +28,7 @@
       background-size: 64px 64px;
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; } /* Increased content container width for massive text */
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
     
     /* ── REDESIGNED TECH TAG & RED ACCENT BOX ── */
     .hero-tag {
@@ -46,13 +48,14 @@
       box-shadow: 0 0 8px var(--red);
     }
     
-    /* ── MASSIVE CTRL-ALT-DEFEAT TITLE ── */
+    /* ── ROBOTIC/FUTURISTIC HERO HEADER ── */
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: clamp(7.5rem, 16vw, 13rem) !important; /* Extremely big impact sizing */
-      line-height: 0.85 !important;                     /* Tight vertical stacking */
-      letter-spacing: 1px !important;
-      margin-bottom: 2rem !important;
+      font-family: 'Orbitron', 'Bebas Neue', sans-serif !important;
+      font-size: clamp(4rem, 9vw, 7.5rem) !important;   /* Original high-impact balanced size */
+      line-height: 1.0 !important;                      /* Tight height for tech look */
+      letter-spacing: 4px !important;                   /* Aerospace blueprint letter spacing */
+      margin-bottom: 1.5rem !important;
+      text-shadow: 0 0 20px rgba(201, 64, 64, 0.15);    /* Subtle red neon aura */
     }
     .hero h1 .red { color: var(--red); }
     .hero p { font-size: 1.1rem; color: var(--muted2); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.75; }
