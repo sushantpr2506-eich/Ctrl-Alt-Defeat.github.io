@@ -26,7 +26,9 @@
       background-size: 64px 64px;
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; } /* Increased content container width for massive text */
+    
+    /* ── REDESIGNED TECH TAG & RED ACCENT BOX ── */
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.6rem;
       background: rgba(201,64,64,0.1); border: 1px solid rgba(201,64,64,0.3);
@@ -34,12 +36,23 @@
       font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
       text-transform: uppercase; color: var(--red); margin-bottom: 2rem;
     }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background: var(--red);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--red);
+    }
+    
+    /* ── MASSIVE CTRL-ALT-DEFEAT TITLE ── */
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(7.5rem, 16vw, 12.5rem); /* Increased minimum, scaling, and maximum sizes */
-      line-height: 0.9; 
-      letter-spacing: 2px; 
-      margin-bottom: 1.5rem;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: clamp(7.5rem, 16vw, 13rem) !important; /* Extremely big impact sizing */
+      line-height: 0.85 !important;                     /* Tight vertical stacking */
+      letter-spacing: 1px !important;
+      margin-bottom: 2rem !important;
     }
     .hero h1 .red { color: var(--red); }
     .hero p { font-size: 1.1rem; color: var(--muted2); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.75; }
@@ -64,7 +77,6 @@
 
     @media(max-width:768px) {
       .hero { padding: 3rem 1.25rem; }
-      .stats-inner { grid-template-columns: repeat(3, 1fr); padding: 1.5rem 1.25rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .highlights { grid-template-columns: 1fr; }
       .hero-num { display: none; }
