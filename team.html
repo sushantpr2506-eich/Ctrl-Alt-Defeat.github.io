@@ -29,22 +29,19 @@
     .team-section { padding: 4rem 2.5rem; background: var(--dark); }
     .coaches-section { padding: 3rem 2.5rem 4rem; background: var(--dark2); border-top: 1px solid var(--border); }
 
-    /* Compact 5-column grid for smaller, tighter member slots */
+    /* Flex container configured to fit 5 on top and center the 4 below */
     .members-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.1rem;
       margin-top: 2.5rem;
     }
 
-    .coaches-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-
+    /* Fixed flex basis for 5 items per row with gap math considered */
     .member-card {
+      flex: 0 0 calc(20% - 0.9rem);
+      max-width: calc(20% - 0.9rem);
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -54,6 +51,13 @@
     .member-card:hover {
       border-color: rgba(201,64,64,0.4);
       transform: translateY(-4px);
+    }
+
+    .coaches-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
     }
 
     .coach-card {
@@ -139,10 +143,24 @@
     .footer-links a:hover { color: var(--light); }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
-    @media(max-width: 1100px) { .members-grid { grid-template-columns: repeat(4, 1fr); } }
-    @media(max-width: 850px) { .members-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* Responsive Breakpoints */
+    @media(max-width: 1100px) {
+      .member-card {
+        flex: 0 0 calc(25% - 0.9rem);
+        max-width: calc(25% - 0.9rem);
+      }
+    }
+    @media(max-width: 850px) {
+      .member-card {
+        flex: 0 0 calc(33.333% - 0.9rem);
+        max-width: calc(33.333% - 0.9rem);
+      }
+    }
     @media(max-width: 600px) {
-      .members-grid { grid-template-columns: repeat(2, 1fr); }
+      .member-card {
+        flex: 0 0 calc(50% - 0.6rem);
+        max-width: calc(50% - 0.6rem);
+      }
       .coaches-grid { grid-template-columns: 1fr; }
       .team-section { padding: 3rem 1.25rem; }
       .coaches-section { padding: 2rem 1.25rem 3rem; }
@@ -190,7 +208,7 @@
     </div>
   </div>
 
-  <!-- STUDENTS (COMPACT 9 MEMBERS) -->
+  <!-- STUDENTS (5 TOP, 4 CENTERED BOTTOM) -->
   <div class="team-section">
     <div class="container">
       <div class="section-label">The Students</div>
