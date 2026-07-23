@@ -50,15 +50,11 @@
       cursor: pointer;
       outline: none;
       box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .season-dropdown:focus {
-      box-shadow: 0 0 18px rgba(201, 64, 64, 0.4);
     }
 
-    /* ── SEASON PANELS TOGGLE ── */
+    /* ── SEASON PANELS ── */
     .season-panel {
-      display: none; /* Hidden by default, toggled via JS */
+      display: none;
       padding: 4rem 2.5rem 5rem;
       background: var(--dark);
     }
@@ -66,7 +62,7 @@
       display: block;
     }
 
-    /* ── MASSIVE CENTRAL RANKING SPOT ── */
+    /* ── RANKING SHOWCASE ── */
     .ranking-showcase {
       text-align: center;
       margin: 3.5rem auto;
@@ -144,13 +140,50 @@
       text-align: center;
     }
 
+    /* ── HIGHLIGHT CARDS & CONTENT GRID ── */
+    .content-block {
+      max-width: 900px;
+      margin: 4rem auto 0;
+    }
+    .content-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .highlight-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+    }
+    .highlight-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .highlight-card p {
+      color: var(--muted2);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
     @media(max-width: 768px) {
       .season-stats-grid { grid-template-columns: 1fr; max-width: 400px; }
       .ranking-showcase { max-width: 90%; padding: 2rem 1rem; }
       .ranking-showcase .rank-num { font-size: 4.5rem; }
       .season-panel { padding: 3rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
-      .season-selector-wrapper { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -202,13 +235,13 @@
       <span class="season-select-label">Select Competition Season:</span>
       <select class="season-dropdown" id="seasonSelect" onchange="switchSeason(this.value)">
         <option value="biobuzz">BIOBUZZ (2026–2027) — Current</option>
-        <option value="decode">DECODE (2025–2026) — Rookie Year</option>
+        <option value="decode" selected>DECODE (2025–2026) — Rookie Year</option>
       </select>
     </div>
   </div>
 
   <!-- SEASON PANEL 1: BIOBUZZ 2026-27 -->
-  <section class="season-panel active" id="panel-biobuzz">
+  <section class="season-panel" id="panel-biobuzz">
     <div class="container">
       <div class="section-label">Current Season</div>
       <h2 class="section-title">BIOBUZZ 2026–27</h2>
@@ -240,18 +273,20 @@
     </div>
   </section>
 
-  <!-- SEASON PANEL 2: DECODE 2025-26 -->
-  <section class="season-panel" id="panel-decode">
+  <!-- SEASON PANEL 2: DECODE 2025-26 (ROOKIE YEAR) -->
+  <section class="season-panel active" id="panel-decode">
     <div class="container">
       <div class="section-label">Rookie Season</div>
       <h2 class="section-title">DECODE 2025–26</h2>
 
+      <!-- MASSIVE CENTRAL RANKING DISPLAY -->
       <div class="ranking-showcase">
         <div class="rank-lbl">Final Placement</div>
         <div class="rank-num"><span>#</span>--</div>
         <div class="rank-context">State Championship Competitor</div>
       </div>
 
+      <!-- HARDCODED METRICS GRID -->
       <div class="season-stats-grid">
         <div class="season-stat-card">
           <div class="stat-num">30</div>
@@ -270,6 +305,26 @@
       <p class="season-summary">
         Over the course of 30 high-intensity match rounds, our team adapted swiftly to alliance strategies, mechanical stressors, and structural field repairs. Winning 22 matches out of our 6 tournament appearances proved the consistency of our driver practice runs and autonomous execution paths.
       </p>
+
+      <!-- ROOKIE YEAR MILESTONES & HIGHLIGHTS -->
+      <div class="content-block">
+        <h3>Rookie Campaign Highlights</h3>
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <h4>Robot Evolution</h4>
+            <p>Evolved from an initial starterbot frame to a custom 3D-printed intake and precision lift mechanism tuned for efficient scoring cycle speeds.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Autonomous Precision</h4>
+            <p>Developed full Java-based autonomous paths using sensor feedback, securing consistent early-match lead points across qualifiers.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Outreach & Leadership</h4>
+            <p>Hosted hands-on STEM workshops and mentored youth robotics, establishing our team's core commitment to community outreach.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -306,14 +361,11 @@
 
 </div>
 
-<!-- JAVASCRIPT FOR SEASON SWITCHING -->
 <script>
   function switchSeason(seasonKey) {
-    // Hide all panels
     document.querySelectorAll('.season-panel').forEach(panel => {
       panel.classList.remove('active');
     });
-    // Show selected panel
     const activePanel = document.getElementById('panel-' + seasonKey);
     if (activePanel) {
       activePanel.classList.add('active');
