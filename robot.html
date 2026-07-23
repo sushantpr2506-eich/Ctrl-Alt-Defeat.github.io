@@ -15,6 +15,52 @@
     .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
     .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
+    /* ── DROPDOWN SELECTOR BAR ── */
+    .robot-selector-wrapper {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+    }
+    .robot-selector-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .robot-select-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .robot-dropdown {
+      background: var(--card);
+      color: var(--light);
+      border: 1px solid var(--red);
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* ── ROBOT PANELS TOGGLE ── */
+    .robot-panel {
+      display: none;
+    }
+    .robot-panel.active {
+      display: block;
+    }
+
     /* ── MAIN ROBOT ── */
     .robot-hero {
       display: flex; flex-direction: column; align-items: center;
@@ -43,9 +89,18 @@
     .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
     .robot-text p { color: var(--muted2); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
 
-    /* ── STATS ── */
+    /* ── CENTERED STATS BAR (3 ITEMS) ── */
     .stats-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stats-inner { 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 2.5rem; 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1.5rem; 
+      justify-content: center;
+      align-items: center;
+    }
     .stat-card { text-align: center; padding: 1rem; }
     .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--red); line-height: 1; }
     .stat-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
@@ -103,12 +158,13 @@
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
     @media(max-width: 768px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: 1fr; max-width: 400px; }
       .comparison-grid { grid-template-columns: 1fr; }
       .intake-grid { grid-template-columns: 1fr; }
       .robot-hero { padding: 3.5rem 1.25rem; }
       .comparison-section, .intake-section { padding: 4rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
+      .robot-selector-wrapper { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -148,141 +204,162 @@
       <div class="section-label">Engineering</div>
       <h1>Meet Our Robot</h1>
       <div class="divider-red"></div>
-      <p>Designed, built, and programmed entirely by Team #31844 for the FTC DECODE 2025–26 season.</p>
+      <p>Explore custom hardware builds, sub-systems, and design evolutions created by Team #31844.</p>
     </div>
   </div>
 
-  <!-- MAIN ROBOT + DESCRIPTION -->
-  <!-- robot.jpg = Image 4, front view showing REV Control Hub and camera -->
-  <div class="robot-hero">
-    <div class="robot-photo-wrap">
-      <div class="robot-photo-box">
-        <img src="robot.jpg" alt="Our Robot">
-      </div>
-    </div>
-    <div class="robot-text">
-      <h2>Our Robot</h2>
-      <div class="divider-red"></div>
-      <!-- ✏️ Write your overall robot description here -->
-      <p>Write your overall robot description here — what it does, how it performs in DECODE, and what makes it stand out this season.</p>
-      <p>Add a second paragraph about your programming, autonomous strategy, or any technical highlights you're proud of.</p>
+  <!-- DROPDOWN ROBOT SELECTOR BAR -->
+  <div class="robot-selector-wrapper">
+    <div class="robot-selector-inner">
+      <span class="robot-select-label">Select Competition Robot:</span>
+      <select class="robot-dropdown" id="robotSelect" onchange="switchRobot(this.value)">
+        <option value="biobuzz">BIOBUZZ Build (2026–2027) — Current</option>
+        <option value="decode" selected>DECODE Build (2025–2026) — Rookie Year</option>
+      </select>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-section">
-    <div class="stats-inner">
-      <div class="stat-card">
-        <div class="stat-num">17</div>
-        <div class="stat-lbl">Avg. Artifacts / Match</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">Top 5</div>
-        <div class="stat-lbl">League Finish</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">Java</div>
-        <div class="stat-lbl">Programming Language</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">3D</div>
-        <div class="stat-lbl">Printed Custom Parts</div>
+  <!-- ==================== ROBOT TAB 1: BIOBUZZ (CURRENT SEASON - EMPTY PLACEHOLDER) ==================== -->
+  <div class="robot-panel" id="panel-biobuzz">
+    <div class="robot-hero">
+      <div class="robot-text">
+        <h2>BIOBUZZ Robot</h2>
+        <div class="divider-red"></div>
+        <p>Our current season robot is actively being designed, prototyped, and tested for the BIOBUZZ 2026–2027 campaign!</p>
+        <p>Stay tuned — photos, specs, and subsystem breakdowns will be posted here as hardware testing concludes.</p>
       </div>
     </div>
   </div>
 
-  <!-- OLD VS NEW COMPARISON -->
-  <!-- robot_old.jpg = Image 2 (early build), robot_new.jpg = Image 3 (current side view) -->
-  <div class="comparison-section">
-    <div class="container">
-      <div class="section-label">Evolution</div>
-      <h2 class="section-title">Old Robot vs New Robot</h2>
-      <p class="section-sub">A comparison of our early season robot and our current design.</p>
+  <!-- ==================== ROBOT TAB 2: DECODE (ROOKIE YEAR - YOUR ORIGINAL BUILD) ==================== -->
+  <div class="robot-panel active" id="panel-decode">
 
-      <div class="comparison-grid">
-        <div class="comp-card">
-          <div class="comp-img">
-            <img src="robot_old.jpg" alt="Old Robot">
-          </div>
-          <div class="comp-body">
-            <span class="comp-badge old">Early Season</span>
-            <div class="comp-title">Starterbot</div>
-            <div class="pros-cons">
-              <div class="pros">
-                <h4>Pros</h4>
-                <ul>
-                  <li>Simple goBILDA starterbot and chassis</li>
-                  <li>Curved plastic guide improved shooting accuracy</li>
-                  <li>Strong foundation for early season testing</li>
-                </ul>
+    <!-- MAIN ROBOT + DESCRIPTION -->
+    <div class="robot-hero">
+      <div class="robot-photo-wrap">
+        <div class="robot-photo-box">
+          <img src="robot.jpg" alt="Our Robot">
+        </div>
+      </div>
+      <div class="robot-text">
+        <h2>Our Robot</h2>
+        <div class="divider-red"></div>
+        <!-- ✏️ Write your overall robot description here -->
+        <p>Write your overall robot description here — what it does, how it performs in DECODE, and what makes it stand out this season.</p>
+        <p>Add a second paragraph about your hardware strategy, autonomous strategy, or any technical highlights you're proud of.</p>
+      </div>
+    </div>
+
+    <!-- STATS (3 ITEMS CENTERED ALIGNED, JAVA REMOVED) -->
+    <div class="stats-section">
+      <div class="stats-inner">
+        <div class="stat-card">
+          <div class="stat-num">17</div>
+          <div class="stat-lbl">Avg. Artifacts / Match</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Top 5</div>
+          <div class="stat-lbl">League Finish</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3D</div>
+          <div class="stat-lbl">Printed Custom Parts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OLD VS NEW COMPARISON -->
+    <div class="comparison-section">
+      <div class="container">
+        <div class="section-label">Evolution</div>
+        <h2 class="section-title">Old Robot vs New Robot</h2>
+        <p class="section-sub">A comparison of our early season robot and our current design.</p>
+
+        <div class="comparison-grid">
+          <div class="comp-card">
+            <div class="comp-img">
+              <img src="robot_old.jpg" alt="Old Robot">
+            </div>
+            <div class="comp-body">
+              <span class="comp-badge old">Early Season</span>
+              <div class="comp-title">Starterbot</div>
+              <div class="pros-cons">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Simple goBILDA starterbot and chassis</li>
+                    <li>Curved plastic guide improved shooting accuracy</li>
+                    <li>Strong foundation for early season testing</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>Limited customization</li>
+                    <li>3 max ball auto due to human player only</li>
+                    <li>Harder to maintain performance as competition increased</li>
+                  </ul>
+                </div>
               </div>
-              <div class="cons">
-                <h4>Cons</h4>
-                <ul>
-                  <li>Limited customization</li>
-                  <li>3 max ball auto due to human player only</li>
-                  <li>Harder to maintain performance as competition increased</li>
-                </ul>
+            </div>
+          </div>
+
+          <div class="comp-card new">
+            <div class="comp-img">
+              <img src="robot_new.jpg" alt="Current Robot">
+            </div>
+            <div class="comp-body">
+              <span class="comp-badge new">Current Design ✦</span>
+              <div class="comp-title">Season Robot</div>
+              <div class="pros-cons">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Custom design enhanced for our game strategy</li>
+                    <li>Faster cycle times due to improved intake</li>
+                    <li>Built using lessons learned from the starterbot</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>More testing needed to reach peak consistency</li>
+                    <li>Higher power requires more frequent battery changes</li>
+                    <li>Increased mechanical complexity vs starterbot</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="comp-card new">
-          <div class="comp-img">
-            <img src="robot_new.jpg" alt="Current Robot">
+    <!-- INTAKE SYSTEM -->
+    <div class="intake-section">
+      <div class="container">
+        <div class="section-label">Mechanism</div>
+        <h2 class="section-title">Intake System</h2>
+        <div class="intake-grid">
+          <div class="intake-img">
+            <img src="robot_intake.jpg" alt="Intake System">
           </div>
-          <div class="comp-body">
-            <span class="comp-badge new">Current Design ✦</span>
-            <div class="comp-title">Season Robot</div>
-            <div class="pros-cons">
-              <div class="pros">
-                <h4>Pros</h4>
-                <ul>
-                  <li>Custom design enhanced for our game strategy</li>
-                  <li>Faster cycle times due to improved intake</li>
-                  <li>Built using lessons learned from the starterbot</li>
-                </ul>
-              </div>
-              <div class="cons">
-                <h4>Cons</h4>
-                <ul>
-                  <li>More testing needed to reach peak consistency</li>
-                  <li>Higher power requires more frequent battery changes</li>
-                  <li>Increased mechanical complexity vs starterbot</li>
-                </ul>
-              </div>
-            </div>
+          <div>
+            <span class="sub-tag">Mechanism 01</span>
+            <div class="sub-title">Intake System</div>
+            <div class="sub-desc">Our intake system features a roller mechanism mounted at the front of the robot, paired with a funnel to guide balls smoothly into the robot. The compact design keeps the center of gravity low while allowing for fast and consistent ball collection during both autonomous and driver-controlled periods.</div>
+            <ul class="sub-bullets">
+              <li>Roller intake designed for fast and reliable ball collection</li>
+              <li>Funnel guides balls smoothly into the robot</li>
+              <li>Wide intake opening allows successful pickups even when slightly misaligned</li>
+              <li>Prioritizes consistency to prevent any over capacity issues</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- INTAKE SYSTEM -->
-  <!-- robot_intake.jpg = Image 1 (roller/spindex front view) -->
-  <div class="intake-section">
-    <div class="container">
-      <div class="section-label">Mechanism</div>
-      <h2 class="section-title">Intake System</h2>
-      <div class="intake-grid">
-        <div class="intake-img">
-          <img src="robot_intake.jpg" alt="Intake System">
-        </div>
-        <div>
-          <span class="sub-tag">Mechanism 01</span>
-          <div class="sub-title">Intake System</div>
-          <div class="sub-desc">Our intake system features a roller mechanism mounted at the front of the robot, paired with a funnel to guide balls smoothly into the robot. The compact design keeps the center of gravity low while allowing for fast and consistent ball collection during both autonomous and driver-controlled periods.</div>
-          <ul class="sub-bullets">
-            <li>Roller intake designed for fast and reliable ball collection</li>
-            <li>Funnel guides balls smoothly into the robot</li>
-            <li>Wide intake opening allows successful pickups even when slightly misaligned</li>
-            <li>Prioritizes consistency to prevent any over capacity issues</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  </div> <!-- END DECODE PANEL -->
 
   <footer>
     <div class="footer-inner">
@@ -291,7 +368,7 @@
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · BIOBUZZ Season 2026–27<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
@@ -315,5 +392,18 @@
   </footer>
 
 </div>
+
+<script>
+  function switchRobot(robotKey) {
+    document.querySelectorAll('.robot-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    const activePanel = document.getElementById('panel-' + robotKey);
+    if (activePanel) {
+      activePanel.classList.add('active');
+    }
+  }
+</script>
+
 </body>
 </html>
