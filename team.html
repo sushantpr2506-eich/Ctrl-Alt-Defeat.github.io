@@ -27,12 +27,13 @@
     }
 
     .team-section { padding: 5rem 2.5rem; background: var(--dark); }
-    .coaches-section { padding: 3rem 2.5rem 5rem; background: var(--dark); }
+    .coaches-section { padding: 3rem 2.5rem 5rem; background: var(--dark2); border-top: 1px solid var(--border); }
 
+    /* 3x3 Grid for 9 Members */
     .members-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       margin-top: 3rem;
     }
 
@@ -109,7 +110,7 @@
     .member-info { padding: 1.1rem 1.25rem 1.4rem; }
     .member-name {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem; font-weight: 700;
+      font-size: 1.1rem; font-weight: 700;
       letter-spacing: 0.5px; margin-bottom: 0.2rem;
     }
     .member-role {
@@ -117,7 +118,7 @@
       letter-spacing: 1.5px; text-transform: uppercase;
       color: var(--red); margin-bottom: 0.65rem;
     }
-    .member-bio { font-size: 0.82rem; color: var(--muted2); line-height: 1.6; }
+    .member-bio { font-size: 0.85rem; color: var(--muted2); line-height: 1.6; }
 
     .captain-badge {
       display: inline-block; background: var(--red); color: #fff;
@@ -137,12 +138,12 @@
     .footer-links a:hover { color: var(--light); }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
-    @media(max-width: 1024px) { .members-grid { grid-template-columns: repeat(4, 1fr); } }
-    @media(max-width: 768px) {
-      .members-grid { grid-template-columns: repeat(2, 1fr); }
+    @media(max-width: 900px) { .members-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 600px) {
+      .members-grid { grid-template-columns: 1fr; }
       .coaches-grid { grid-template-columns: 1fr; }
       .team-section { padding: 3.5rem 1.25rem; }
-      .coaches-section { padding: 2rem 1.25rem 3.5rem; }
+      .coaches-section { padding: 2.5rem 1.25rem 3.5rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
     }
   </style>
@@ -183,32 +184,30 @@
       <div class="section-label">Team #31844</div>
       <h1>Meet the Team</h1>
       <div class="divider-red"></div>
-      <p>The students, coaches, and mentors behind Ctrl-Alt-Defeat. Every robot is built by people — here are ours.</p>
+      <p>The students and coaches behind Ctrl-Alt-Defeat. Every robot is built by people — here are ours.</p>
     </div>
   </div>
 
-  <!-- STUDENTS -->
+  <!-- STUDENTS (9 MEMBERS) -->
   <div class="team-section">
     <div class="container">
       <div class="section-label">The Students</div>
       <h2 class="section-title">Our Members</h2>
-      <p class="section-sub">The 10 students who make it all happen — from building and coding to outreach and strategy.</p>
+      <p class="section-sub">The 9 students who make it all happen — from building and coding to outreach and strategy.</p>
 
       <div class="members-grid">
 
-        <!-- ✏️ MEMBER 1 -->
+        <!-- MEMBER 1 -->
         <div class="member-card">
-          <div class="member-photo">
-            <img src="member1.jpg" alt="Name">
-          </div>
+          <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
-            <div class="member-name">-</div>
-            <div class="member-role">-</div>
-            <div class="member-bio">none</div>
+            <div class="member-name">Full Name <span class="captain-badge">Captain</span></div>
+            <div class="member-role">Team Lead</div>
+            <div class="member-bio">Short bio — grade, role on the team, what they love about robotics.</div>
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 2 -->
+        <!-- MEMBER 2 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -218,7 +217,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 3 -->
+        <!-- MEMBER 3 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -228,7 +227,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 4 -->
+        <!-- MEMBER 4 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -238,7 +237,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 5 -->
+        <!-- MEMBER 5 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -248,7 +247,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 6 -->
+        <!-- MEMBER 6 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -258,7 +257,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 7 -->
+        <!-- MEMBER 7 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -268,7 +267,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 8 -->
+        <!-- MEMBER 8 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -278,17 +277,7 @@
           </div>
         </div>
 
-        <!-- ✏️ MEMBER 9 -->
-        <div class="member-card">
-          <div class="member-photo"><div class="member-initials">XX</div></div>
-          <div class="member-info">
-            <div class="member-name">Full Name</div>
-            <div class="member-role">Build Team</div>
-            <div class="member-bio">Short bio — grade, role on the team, what they love about robotics.</div>
-          </div>
-        </div>
-
-        <!-- ✏️ MEMBER 10 -->
+        <!-- MEMBER 9 -->
         <div class="member-card">
           <div class="member-photo"><div class="member-initials">XX</div></div>
           <div class="member-info">
@@ -302,38 +291,36 @@
     </div>
   </div>
 
-  <!-- COACHES & MENTORS -->
+  <!-- COACHES ONLY -->
   <div class="coaches-section">
     <div class="container">
       <div class="section-label">Leadership</div>
-      <h2 class="section-title">Coaches & Mentors</h2>
-      <p class="section-sub">The adults who guide, support, and push us to be better every day.</p>
+      <h2 class="section-title">Coaches</h2>
+      <p class="section-sub">The coaches who guide, support, and keep our team running behind the scenes.</p>
 
       <div class="coaches-grid">
 
-        <!-- ✏️ COACH 1 -->
+        <!-- COACH 1 -->
         <div class="coach-card">
           <div class="coach-photo">
-            <!-- Replace with: <img src="coach1.jpg" alt="Name"> -->
             <div class="coach-initials">XX</div>
           </div>
           <div class="coach-info">
             <div class="coach-name">Full Name</div>
             <div class="coach-role">Head Coach</div>
-            <div class="coach-bio">Add a short bio about this coach — their background, what they bring to the team, and how long they've been involved.</div>
+            <div class="coach-bio">Short bio about this coach — their background, what they bring to the team, and how long they've been involved in FIRST.</div>
           </div>
         </div>
 
-        <!-- ✏️ COACH 2 / MENTOR -->
+        <!-- COACH 2 -->
         <div class="coach-card">
           <div class="coach-photo">
-            <!-- Replace with: <img src="coach2.jpg" alt="Name"> -->
             <div class="coach-initials">XX</div>
           </div>
           <div class="coach-info">
             <div class="coach-name">Full Name</div>
-            <div class="coach-role">Mentor</div>
-            <div class="coach-bio">Add a short bio about this mentor — their expertise, what they help with (programming, build, business), and what they love about FTC.</div>
+            <div class="coach-role">Assistant Coach</div>
+            <div class="coach-bio">Short bio about this coach — their focus areas, guidance with the team, and dedication to STEM education.</div>
           </div>
         </div>
 
