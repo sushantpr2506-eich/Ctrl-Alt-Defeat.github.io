@@ -15,44 +15,87 @@
     .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
     .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
-    /* ── SEASON SECTIONS ── */
-    .season-era {
-      padding: 5rem 2.5rem;
-      background: var(--dark); 
+    /* ── DROPDOWN SELECTOR BAR ── */
+    .season-selector-wrapper {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+    }
+    .season-selector-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .season-select-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .season-dropdown {
+      background: var(--card);
+      color: var(--light);
+      border: 1px solid var(--red);
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .season-dropdown:focus {
+      box-shadow: 0 0 18px rgba(201, 64, 64, 0.4);
+    }
+
+    /* ── SEASON PANELS TOGGLE ── */
+    .season-panel {
+      display: none; /* Hidden by default, toggled via JS */
+      padding: 4rem 2.5rem 5rem;
+      background: var(--dark);
+    }
+    .season-panel.active {
+      display: block;
     }
 
     /* ── MASSIVE CENTRAL RANKING SPOT ── */
     .ranking-showcase {
       text-align: center;
       margin: 3.5rem auto;
-      max-width: 460px; /* Made the container wider */
+      max-width: 460px;
       background: rgba(201, 64, 64, 0.04);
-      border: 2px solid rgba(201, 64, 64, 0.4); /* Made the border thicker and solid */
-      padding: 2.5rem 2rem; /* Added way more breathing room */
+      border: 2px solid rgba(201, 64, 64, 0.4);
+      padding: 2.5rem 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 25px rgba(201, 64, 64, 0.1); /* Added a glowing tech aura */
+      box-shadow: 0 0 25px rgba(201, 64, 64, 0.1);
     }
     .ranking-showcase .rank-lbl {
-      font-size: 0.85rem; /* Upgraded text size */
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 3px; /* Stretched it out for a pro look */
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
     .ranking-showcase .rank-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 6.5rem; /* Massively blew up the number size */
+      font-size: 6.5rem;
       color: var(--light);
       line-height: 0.9;
       margin-bottom: 0.5rem;
     }
-    .ranking-showcase .rank-num span {
-      color: var(--red);
-    }
+    .ranking-showcase .rank-num span { color: var(--red); }
     .ranking-showcase .rank-context {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem; /* Bigger title description */
+      font-size: 1.3rem;
       font-weight: 700;
       letter-spacing: 1px;
       color: var(--light);
@@ -90,13 +133,24 @@
       color: var(--muted);
       margin-top: 0.4rem;
     }
+    .season-summary {
+      color: var(--muted2);
+      margin-top: 3.5rem;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
 
     @media(max-width: 768px) {
       .season-stats-grid { grid-template-columns: 1fr; max-width: 400px; }
       .ranking-showcase { max-width: 90%; padding: 2rem 1rem; }
       .ranking-showcase .rank-num { font-size: 4.5rem; }
-      .season-era { padding: 4rem 1.25rem; }
+      .season-panel { padding: 3rem 1.25rem; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
+      .season-selector-wrapper { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -112,7 +166,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About FIRST</a></li>
-      <li><a href="season.html" class="active">Season</a></li>
+      <li><a href="season.html" class="active">Seasons</a></li>
       <li><a href="robot.html">Robot</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="outreach.html">Outreach</a></li>
@@ -125,7 +179,7 @@
   <div class="mobile-menu" id="mob">
     <a href="index.html">Home</a>
     <a href="about.html">About FIRST</a>
-    <a href="season.html">Season</a>
+    <a href="season.html">Seasons</a>
     <a href="robot.html">Robot</a>
     <a href="team.html">Team</a>
     <a href="outreach.html">Outreach</a>
@@ -142,20 +196,62 @@
     </div>
   </div>
 
-  <!-- ROOKIE SEASON (LAST YEAR) -->
-  <section class="season-era">
-    <div class="container">
-      <div class="section-label">Last Season</div>
-      <h2 class="section-title">Our Rookie Year</h2>
+  <!-- DROPDOWN SEASON SWITCHER BAR -->
+  <div class="season-selector-wrapper">
+    <div class="season-selector-inner">
+      <span class="season-select-label">Select Competition Season:</span>
+      <select class="season-dropdown" id="seasonSelect" onchange="switchSeason(this.value)">
+        <option value="biobuzz">BIOBUZZ (2026–2027) — Current</option>
+        <option value="decode">DECODE (2025–2026) — Rookie Year</option>
+      </select>
+    </div>
+  </div>
 
-      <!-- MASSIVE CENTRAL RANKING DISPLAY -->
+  <!-- SEASON PANEL 1: BIOBUZZ 2026-27 -->
+  <section class="season-panel active" id="panel-biobuzz">
+    <div class="container">
+      <div class="section-label">Current Season</div>
+      <h2 class="section-title">BIOBUZZ 2026–27</h2>
+
+      <div class="ranking-showcase">
+        <div class="rank-lbl">Current Ranking</div>
+        <div class="rank-num"><span>#</span>--</div>
+        <div class="rank-context">Qualifier Competitor</div>
+      </div>
+
+      <div class="season-stats-grid">
+        <div class="season-stat-card">
+          <div class="stat-num">--</div>
+          <div class="stat-lbl">Total Matches</div>
+        </div>
+        <div class="season-stat-card">
+          <div class="stat-num" style="color: var(--red);">-- - --</div>
+          <div class="stat-lbl">Win–Loss Record</div>
+        </div>
+        <div class="season-stat-card">
+          <div class="stat-num">--</div>
+          <div class="stat-lbl">Events Attended</div>
+        </div>
+      </div>
+
+      <p class="season-summary">
+        We are actively engineering and refining our <a href="robot.html" style="color: var(--red); text-decoration: none;">BIOBUZZ robot</a> and autonomous pathing for upcoming qualifier matches. Every iteration pushes our design closer to peak field performance.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEASON PANEL 2: DECODE 2025-26 -->
+  <section class="season-panel" id="panel-decode">
+    <div class="container">
+      <div class="section-label">Rookie Season</div>
+      <h2 class="section-title">DECODE 2025–26</h2>
+
       <div class="ranking-showcase">
         <div class="rank-lbl">Final Placement</div>
-        <div class="rank-num"><span>#</span>--</div> <!-- Drop your actual rookie placement number right where the '--' is! -->
+        <div class="rank-num"><span>#</span>--</div>
         <div class="rank-context">State Championship Competitor</div>
       </div>
 
-      <!-- HARDCODED METRICS GRID -->
       <div class="season-stats-grid">
         <div class="season-stat-card">
           <div class="stat-num">30</div>
@@ -171,27 +267,27 @@
         </div>
       </div>
 
-      <p style="color: var(--muted2); margin-top: 3.5rem; font-size: 0.95rem; line-height: 1.85; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+      <p class="season-summary">
         Over the course of 30 high-intensity match rounds, our team adapted swiftly to alliance strategies, mechanical stressors, and structural field repairs. Winning 22 matches out of our 6 tournament appearances proved the consistency of our driver practice runs and autonomous execution paths.
       </p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="border-top: 1px solid var(--border); padding: 2.5rem;">
+  <footer style="background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem;">
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · BIOBUZZ Season 2026–27<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
         <div class="footer-links">
           <a href="about.html">About FIRST</a>
-          <a href="season.html">Season Info</a>
+          <a href="season.html">Seasons Info</a>
           <a href="robot.html">Our Robot</a>
           <a href="team.html">Meet the Team</a>
           <a href="outreach.html">Outreach</a>
@@ -209,5 +305,21 @@
   </footer>
 
 </div>
+
+<!-- JAVASCRIPT FOR SEASON SWITCHING -->
+<script>
+  function switchSeason(seasonKey) {
+    // Hide all panels
+    document.querySelectorAll('.season-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    // Show selected panel
+    const activePanel = document.getElementById('panel-' + seasonKey);
+    if (activePanel) {
+      activePanel.classList.add('active');
+    }
+  }
+</script>
+
 </body>
 </html>
