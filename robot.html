@@ -3,65 +3,126 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Robot | Ctrl-Alt-Defeat #31844</title>
+  <title>Our Robots | Ctrl-Alt-Defeat #31844</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
     .page-hero {
-      padding: 4rem 2.5rem 3rem;
+      padding: 3.5rem 2.5rem 2.5rem;
       background: var(--dark2);
       border-bottom: 1px solid var(--border);
     }
-    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: 2px; line-height: 1; }
-    .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
-    .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .page-hero p {
+      color: var(--muted2); font-size: 0.95rem;
+      max-width: 560px; margin-top: 0.75rem;
+    }
+    .divider-red {
+      width: 48px; height: 3px;
+      background: var(--red); border-radius: 2px;
+      margin: 1rem 0;
+    }
 
-    /* ── DROPDOWN SELECTOR BAR ── */
-    .robot-selector-wrapper {
-      background: var(--dark2);
+    .robot-section {
+      padding: 4rem 2.5rem;
       border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2.5rem;
     }
-    .robot-selector-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .robot-select-label {
-      font-size: 0.85rem;
+    .robot-section:nth-child(even) { background: var(--dark); }
+    .robot-section:nth-child(odd) { background: var(--dark2); }
+
+    .season-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(201,64,64,0.15);
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .season-badge.past {
+      background: rgba(255,255,255,0.05);
+      border-color: var(--border);
       color: var(--muted2);
     }
-    .robot-dropdown {
+
+    .robot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+
+    .robot-card-main {
       background: var(--card);
-      color: var(--light);
-      border: 1px solid var(--red);
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .robot-image-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .robot-image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    .robot-details { padding: 1.75rem; }
+    .robot-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      outline: none;
-      box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      font-size: 1.8rem; font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    /* ── PANELS TOGGLE ── */
-    .robot-panel {
-      display: none;
+    .spec-list {
+      list-style: none;
+      padding: 0; margin: 1.5rem 0 0 0;
+      display: flex; flex-direction: column; gap: 0.75rem;
     }
-    .robot-panel.active {
-      display: block;
+    .spec-item {
+      display: flex; justify-content: space-between;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+    .spec-label { color: var(--muted2); }
+    .spec-val { color: var(--light); font-weight: 700; }
+
+    .mech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .mech-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .mech-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+    .mech-card p {
+      font-size: 0.85rem;
+      color: var(--muted2);
+      line-height: 1.5;
+      margin: 0;
     }
 
-    /* FOOTER */
     footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
@@ -73,10 +134,11 @@
     .footer-links a:hover { color: var(--light); }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
-    @media(max-width: 768px) {
-      .page-hero { padding: 3rem 1.25rem 2rem; }
-      .section { padding: 4rem 1.25rem; }
-      .robot-selector-wrapper { padding: 1.25rem; }
+    @media(max-width: 900px) {
+      .robot-grid { grid-template-columns: 1fr; }
+      .mech-grid { grid-template-columns: 1fr; }
+      .robot-section { padding: 3rem 1.25rem; }
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
     }
   </style>
 </head>
@@ -91,7 +153,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About FIRST</a></li>
-      <li><a href="season.html">Seasons</a></li>
+      <li><a href="seasons.html">Seasons</a></li>
       <li><a href="robot.html" class="active">Robot</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="outreach.html">Outreach</a></li>
@@ -104,7 +166,7 @@
   <div class="mobile-menu" id="mob">
     <a href="index.html">Home</a>
     <a href="about.html">About FIRST</a>
-    <a href="season.html">Seasons</a>
+    <a href="seasons.html">Seasons</a>
     <a href="robot.html">Robot</a>
     <a href="team.html">Team</a>
     <a href="outreach.html">Outreach</a>
@@ -113,47 +175,119 @@
 
   <div class="page-hero">
     <div class="container">
-      <div class="section-label">Engineering</div>
-      <h1>Our Robot</h1>
+      <div class="section-label">Engineering & Design</div>
+      <h1>Our Robots</h1>
       <div class="divider-red"></div>
-      <p>Explore our robot builds, mechanisms, CAD models, and technical specs built across competition seasons.</p>
+      <p>A look under the hood at our engineering iteration, mechanical subsystems, and code architecture across seasons.</p>
     </div>
   </div>
 
-  <!-- DROPDOWN ROBOT SWITCHER BAR -->
-  <div class="robot-selector-wrapper">
-    <div class="robot-selector-inner">
-      <span class="robot-select-label">Select Competition Season:</span>
-      <select class="robot-dropdown" id="robotSelect" onchange="switchRobot(this.value)">
-        <option value="decode" selected>DECODE (2025–2026) — Rookie Year</option>
-        <option value="biobuzz">BIOBUZZ (2026–2027) — Current</option>
-      </select>
+  <!-- CURRENT SEASON: DECODE (2025–2026) -->
+  <div class="robot-section">
+    <div class="container">
+      <span class="season-badge">Current Season</span>
+      <h2 class="section-title">DECODE Robot (2025–2026)</h2>
+      <p class="section-sub">Our active iteration focusing on speed, precision scoring, and high-reliability mechanisms.</p>
+
+      <div class="robot-grid">
+        <div class="robot-card-main">
+          <div class="robot-image-box">
+            <!-- Swap SVG with <img src="robot-decode.jpg" alt="DECODE Robot"> when ready -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
+              <rect x="25" y="30" width="50" height="40" rx="4" fill="#1b1b22" stroke="#30303a" stroke-width="2"/>
+              <circle cx="35" cy="70" r="8" fill="#30303a"/>
+              <circle cx="65" cy="70" r="8" fill="#30303a"/>
+              <line x1="50" y1="30" x2="50" y2="15" stroke="#c94040" stroke-width="3"/>
+              <circle cx="50" cy="15" r="4" fill="#c94040"/>
+            </svg>
+          </div>
+          <div class="robot-details">
+            <div class="robot-title">DECODE Bot v1</div>
+            <p style="color: var(--muted2); font-size: 0.9rem; line-height: 1.5;">Designed in Autodesk Fusion and built with custom aluminum channel framing and custom 3D printed components.</p>
+            
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-label">Drivetrain</span><span class="spec-val">4-Motor Mecanum</span></li>
+              <li class="spec-item"><span class="spec-label">Control System</span><span class="spec-val">REV Control Hub</span></li>
+              <li class="spec-item"><span class="spec-label">Vision</span><span class="spec-val">Webcam + AprilTags</span></li>
+              <li class="spec-item"><span class="spec-label">Programming Language</span><span class="spec-val">Java (FTC SDK)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mech-grid">
+          <div class="mech-card">
+            <h4>Drivetrain Subsystem</h4>
+            <p>Mecanum wheel setup enabling precise 360-degree holonomic movement for quick repositioning during autonomous and teleop.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Active Intake</h4>
+            <p>High-speed compliant roller intake engineered for swift game piece pickup and jam-free transferring.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Lift System</h4>
+            <p>Multi-stage telescopic linear slides powered by high-torque motors for smooth, rapid extension.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Autonomous Code</h4>
+            <p>Custom autonomous paths utilizing Odometry tracking and AprilTag alignment for pinpoint consistency.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ==================== ROBOT TAB 1: DECODE ==================== -->
-  <div class="robot-panel active" id="panel-decode">
-    <section class="section">
-      <div class="container">
-        <div class="section-label">25-26 Season</div>
-        <h2 class="section-title">DECODE Robot Design</h2>
-        <p class="section-sub">Overview of our hardware, intake systems, and autonomous code for the DECODE game challenge.</p>
+  <!-- ROOKIE SEASON: CENTERSTAGE (2024–2025) - RESTORED FULL LAYOUT -->
+  <div class="robot-section">
+    <div class="container">
+      <span class="season-badge past">Rookie Season</span>
+      <h2 class="section-title">CENTERSTAGE Robot (2024–2025)</h2>
+      <p class="section-sub">Our inaugural FTC robot that established our team's mechanical baseline and programming stack.</p>
+
+      <div class="robot-grid">
+        <div class="robot-card-main">
+          <div class="robot-image-box">
+            <!-- Swap SVG with <img src="robot-centerstage.jpg" alt="CENTERSTAGE Robot"> when ready -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
+              <rect x="25" y="35" width="50" height="35" rx="4" fill="#1b1b22" stroke="#30303a" stroke-width="2"/>
+              <circle cx="35" cy="70" r="7" fill="#30303a"/>
+              <circle cx="65" cy="70" r="7" fill="#30303a"/>
+              <path d="M 40 35 L 50 20 L 60 35 Z" fill="#30303a" stroke="#c94040" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="robot-details">
+            <div class="robot-title">Rookie Bot</div>
+            <p style="color: var(--muted2); font-size: 0.9rem; line-height: 1.5;">Built to handle pixel scoring on the backdrop and rigging hanging during our rookie competition season.</p>
+            
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-label">Drivetrain</span><span class="spec-val">Mecanum Drive</span></li>
+              <li class="spec-item"><span class="spec-label">Scoring Subsystem</span><span class="spec-val">Linear Slide + Pixel Box</span></li>
+              <li class="spec-item"><span class="spec-label">Endgame</span><span class="spec-val">Rigging Hook / Suspension</span></li>
+              <li class="spec-item"><span class="spec-label">Sensors</span><span class="spec-val">Drive Encoders + Color Sensor</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mech-grid">
+          <div class="mech-card">
+            <h4>Custom Chassis</h4>
+            <p>Compact frame layout designed specifically to fit within sizing constraints while maintaining a low center of gravity.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Pixel Intake & Outtake</h4>
+            <p>Dual-pixel gripper paired with a multi-stage linear slide to score at high backdrop levels efficiently.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Rigging Mechanism</h4>
+            <p>Endgame lift hook allowing the robot to perform a full hanging maneuver before match expiration.</p>
+          </div>
+          <div class="mech-card">
+            <h4>Encoder TeleOp</h4>
+            <p>Driver-centric controls with smooth power curves, automated slide positioning presets, and intake macros.</p>
+          </div>
+        </div>
       </div>
-    </section>
-  </div> <!-- END DECODE PANEL -->
-
-
-  <!-- ==================== ROBOT TAB 2: BIOBUZZ ==================== -->
-  <div class="robot-panel" id="panel-biobuzz">
-    <section class="section">
-      <div class="container" style="text-align: center; padding: 4rem 1rem;">
-        <div class="section-label">26-27 Season</div>
-        <h2 class="section-title">BIOBUZZ Robot Design</h2>
-        <p class="section-sub" style="margin: 1rem auto 0; max-width: 500px;">CAD renders, mechanism breakdowns, and specifications for our BIOBUZZ robot will be posted here soon!</p>
-      </div>
-    </section>
-  </div> <!-- END BIOBUZZ PANEL -->
-
+    </div>
+  </div>
 
   <footer>
     <div class="footer-inner">
@@ -162,13 +296,13 @@
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · Team 31844<br/>© 2026 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
         <div class="footer-links">
           <a href="about.html">About FIRST</a>
-          <a href="season.html">Seasons</a>
+          <a href="seasons.html">Seasons Info</a>
           <a href="robot.html">Our Robot</a>
           <a href="team.html">Meet the Team</a>
           <a href="outreach.html">Outreach</a>
@@ -186,18 +320,5 @@
   </footer>
 
 </div>
-
-<script>
-  function switchRobot(robotKey) {
-    document.querySelectorAll('.robot-panel').forEach(panel => {
-      panel.classList.remove('active');
-    });
-    const activePanel = document.getElementById('panel-' + robotKey);
-    if (activePanel) {
-      activePanel.classList.add('active');
-    }
-  }
-</script>
-
 </body>
 </html>
