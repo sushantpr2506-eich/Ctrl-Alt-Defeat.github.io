@@ -29,8 +29,8 @@
     .team-section { padding: 4rem 2.5rem; background: var(--dark); }
     .coaches-section { padding: 3rem 2.5rem 4rem; background: var(--dark2); border-top: 1px solid var(--border); }
 
-    /* Flex container configured to fit 5 on top and center the 4 below */
-    .members-grid {
+    /* Flex container configured for centering cards */
+    .members-grid, .coaches-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -38,7 +38,7 @@
       margin-top: 2.5rem;
     }
 
-    /* Fixed flex basis for 5 items per row */
+    /* Fixed flex basis for uniform card sizes */
     .member-card {
       flex: 0 0 calc(20% - 0.9rem);
       max-width: calc(20% - 0.9rem);
@@ -51,54 +51,6 @@
     .member-card:hover {
       border-color: rgba(201,64,64,0.4);
       transform: translateY(-4px);
-    }
-
-    /* Grid for coaches styled with consistent sizing */
-    .coaches-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-      align-items: stretch;
-    }
-
-    .coach-card {
-      background: var(--card);
-      border: 1px solid rgba(201,64,64,0.2);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      padding: 1.25rem;
-      min-height: 100px;
-      box-sizing: border-box;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .coach-card:hover {
-      border-color: rgba(201,64,64,0.5);
-      transform: translateY(-3px);
-    }
-
-    .coach-photo {
-      width: 75px; height: 75px;
-      border-radius: 50%;
-      background: var(--dark3);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; flex-shrink: 0;
-      border: 2px solid rgba(201,64,64,0.3);
-    }
-    .coach-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .coach-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem; font-weight: 700;
-      letter-spacing: 0.5px; margin-bottom: 0.2rem;
-    }
-    .coach-role {
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--red);
     }
 
     /* Compact Photo & Info Styling */
@@ -151,7 +103,6 @@
         flex: 0 0 calc(50% - 0.6rem);
         max-width: calc(50% - 0.6rem);
       }
-      .coaches-grid { grid-template-columns: 1fr; }
       .team-section { padding: 3rem 1.25rem; }
       .coaches-section { padding: 2rem 1.25rem 3rem; }
       .page-hero { padding: 2.5rem 1.25rem 2rem; }
@@ -169,7 +120,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About FIRST</a></li>
-      <li><a href="season.html">Season</a></li>
+      <li><a href="seasons.html">Seasons</a></li>
       <li><a href="robot.html">Robot</a></li>
       <li><a href="team.html" class="active">Team</a></li>
       <li><a href="outreach.html">Outreach</a></li>
@@ -182,7 +133,7 @@
   <div class="mobile-menu" id="mob">
     <a href="index.html">Home</a>
     <a href="about.html">About FIRST</a>
-    <a href="season.html">Season</a>
+    <a href="seasons.html">Seasons</a>
     <a href="robot.html">Robot</a>
     <a href="team.html">Team</a>
     <a href="outreach.html">Outreach</a>
@@ -335,7 +286,7 @@
     </div>
   </div>
 
-  <!-- COACHES -->
+  <!-- COACHES (MATCHING MEMBER CARD LAYOUT) -->
   <div class="coaches-section">
     <div class="container">
       <div class="section-label">Leadership</div>
@@ -345,30 +296,36 @@
       <div class="coaches-grid">
 
         <!-- COACH 1 -->
-        <div class="coach-card">
-          <div class="coach-photo">
+        <div class="member-card">
+          <div class="member-photo">
+            <!-- Swap SVG with <img src="coach1.jpg" alt="Head Coach"> when ready -->
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
+              <circle cx="50" cy="50" r="50" fill="#1b1b22"/>
               <circle cx="50" cy="38" r="18" fill="#30303a"/>
               <path d="M 20 88 A 32 32 0 0 1 80 88 Z" fill="#30303a"/>
+              <circle cx="50" cy="50" r="48" fill="none" stroke="#c94040" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
             </svg>
           </div>
-          <div class="coach-info">
-            <div class="coach-name">Full Name</div>
-            <div class="coach-role">Head Coach</div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Head Coach</div>
           </div>
         </div>
 
         <!-- COACH 2 -->
-        <div class="coach-card">
-          <div class="coach-photo">
+        <div class="member-card">
+          <div class="member-photo">
+            <!-- Swap SVG with <img src="coach2.jpg" alt="Assistant Coach"> when ready -->
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
+              <circle cx="50" cy="50" r="50" fill="#1b1b22"/>
               <circle cx="50" cy="38" r="18" fill="#30303a"/>
               <path d="M 20 88 A 32 32 0 0 1 80 88 Z" fill="#30303a"/>
+              <circle cx="50" cy="50" r="48" fill="none" stroke="#c94040" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
             </svg>
           </div>
-          <div class="coach-info">
-            <div class="coach-name">Full Name</div>
-            <div class="coach-role">Assistant Coach</div>
+          <div class="member-info">
+            <div class="member-name">Full Name</div>
+            <div class="member-role">Assistant Coach</div>
           </div>
         </div>
 
@@ -389,7 +346,7 @@
         <div class="footer-col-title">Pages</div>
         <div class="footer-links">
           <a href="about.html">About FIRST</a>
-          <a href="season.html">Season Info</a>
+          <a href="seasons.html">Seasons Info</a>
           <a href="robot.html">Our Robot</a>
           <a href="team.html">Meet the Team</a>
           <a href="outreach.html">Outreach</a>
