@@ -19,12 +19,58 @@
     .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
     .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
+    /* ── DROPDOWN SELECTOR BAR ── */
+    .outreach-selector-wrapper {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+    }
+    .outreach-selector-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .outreach-select-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .outreach-dropdown {
+      background: var(--card);
+      color: var(--light);
+      border: 1px solid var(--red);
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* ── PANELS TOGGLE ── */
+    .outreach-panel {
+      display: none;
+    }
+    .outreach-panel.active {
+      display: block;
+    }
+
     /* IMPACT STATS */
     .impact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     .impact-card {
       background: var(--card);
@@ -89,6 +135,10 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .event-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-4px); }
+    .event-card.slot-card {
+      border: 2px dashed rgba(201, 64, 64, 0.4);
+      background: rgba(201, 64, 64, 0.02);
+    }
     .event-photos {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -131,11 +181,12 @@
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
     @media(max-width: 768px) {
-      .impact-grid { grid-template-columns: repeat(3, 1fr); }
+      .impact-grid { grid-template-columns: 1fr; }
       .goals-grid { grid-template-columns: 1fr; }
       .events-grid { grid-template-columns: 1fr; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
       .section { padding: 4rem 1.25rem; }
+      .outreach-selector-wrapper { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -175,125 +226,223 @@
       <div class="section-label">Community</div>
       <h1>Outreach</h1>
       <div class="divider-red"></div>
-      <p>We believe robotics belongs to everyone. Here's how we spread STEM excitement in our community our first season.</p>
+      <p>We believe robotics belongs to everyone. Here's how we spread STEM excitement across our team's journey.</p>
     </div>
   </div>
 
-  <!-- IMPACT STATS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label">25-26 Season</div>
-      <h2 class="section-title">Our Impact</h2>
-      <div class="impact-grid">
-        <div class="impact-card red">
-          <div class="impact-num">184</div>
-          <div class="impact-lbl">Hours Coaching FLL</div>
-        </div>
-        <div class="impact-card">
-          <div class="impact-num">33</div>
-          <div class="impact-lbl">Hours — Robotics at School</div>
-        </div>
-        <div class="impact-card">
-          <div class="impact-num">6</div>
-          <div class="impact-lbl">Hours — Back to School FIRST</div>
+  <!-- DROPDOWN OUTREACH SWITCHER BAR -->
+  <div class="outreach-selector-wrapper">
+    <div class="outreach-selector-inner">
+      <span class="outreach-select-label">Select Competition Season:</span>
+      <select class="outreach-dropdown" id="outreachSelect" onchange="switchOutreach(this.value)">
+        <option value="biobuzz" selected>BIOBUZZ (2026–2027) — Current</option>
+        <option value="decode">DECODE (2025–2026) — Rookie Year</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ==================== OUTREACH TAB 1: BIOBUZZ (CURRENT SEASON) ==================== -->
+  <div class="outreach-panel active" id="panel-biobuzz">
+    
+    <!-- IMPACT STATS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">26-27 Season</div>
+        <h2 class="section-title">Our Impact</h2>
+        <p class="section-sub">Sustaining momentum with over 220+ hours committed to expanding STEM access.</p>
+        
+        <div class="impact-grid">
+          <div class="impact-card red">
+            <div class="impact-num">220+</div>
+            <div class="impact-lbl">Total Outreach Hours</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-num">120+</div>
+            <div class="impact-lbl">FLL & Youth Mentorship</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-num">100+</div>
+            <div class="impact-lbl">Hands-On STEM Workshops</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SEASON GOALS -->
-  <section class="section" style="background: var(--dark2);">
-    <div class="container">
-      <div class="section-label">Progress</div>
-      <h2 class="section-title">Season Goals</h2>
-      <p class="section-sub">Every goal from our season start and our improved targets — all completed.</p>
+    <!-- OUTREACH EVENTS / SLOTS -->
+    <section class="section" style="background: var(--dark2);">
+      <div class="container">
+        <div class="section-label">Initiatives</div>
+        <h2 class="section-title">BIOBUZZ Events</h2>
+        <p class="section-sub">Events planned and completed during the current season.</p>
 
-      <div class="goals-grid">
+        <div class="events-grid">
 
-        <!-- SEASON START GOALS -->
-        <div class="goals-box">
-          <h3>🎯 Season Start Goals</h3>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for autonomous</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 3 outreach events</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Compete consistently with human player</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score at least 9 artifacts per game</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 10 in the league</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Shoot consistently</div></div>
+          <!-- EVENT SLOT READY FOR UPCOMING EVENT -->
+          <div class="event-card slot-card">
+            <div class="event-photos single">
+              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🚗</div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">Hands-On STEM Event</span>
+              <div class="event-title">Balloon Cars & Archimedes Pumps</div>
+              <div class="event-hours">⏱ 4-Day Interactive Workshop</div>
+              <div class="event-desc">An engaging multi-day outreach challenge where elementary students build balloon cars on Days 1–2 to learn propulsion, followed by Archimedes screw pumps on Days 3–4 to explore mechanical advantage.</div>
+            </div>
+          </div>
+
+          <!-- EVENT SLOT 2 -->
+          <div class="event-card slot-card">
+            <div class="event-photos single">
+              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">⚙️</div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">Mentorship</span>
+              <div class="event-title">FLL Team Coaching & Support</div>
+              <div class="event-hours">⏱ Season-Long Commitment</div>
+              <div class="event-desc">Continuing our dedication to mentoring younger student teams in FIRST LEGO League, providing technical, programming, and presentation guidance.</div>
+            </div>
+          </div>
+
+          <!-- EVENT SLOT 3 -->
+          <div class="event-card slot-card">
+            <div class="event-photos single">
+              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🤖</div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">Community Demo</span>
+              <div class="event-title">[ Upcoming Event Slot ]</div>
+              <div class="event-hours">⏱ TBD Hours</div>
+              <div class="event-desc">Slot ready for your next upcoming community demo, school showcase, or STEM fair event for the BIOBUZZ season.</div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- IMPROVED GOALS -->
-        <div class="goals-box">
-          <h3>🚀 Improved Goals</h3>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for auto in both small and large launch zone</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 8 different outreach events</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Build an efficient intake system</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score more than 12 artifacts per game</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 5</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add short and long range shooting</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add vision to the robot</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add spindex</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Become proficient in coding Java</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add color sensor to the robot</div></div>
-          <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Learn modeling and 3D printing</div></div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- OUTREACH EVENTS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label">Events</div>
-      <h2 class="section-title">What We Did</h2>
-      <p class="section-sub">A look at the outreach events we ran and participated in our first season.</p>
+  </div> <!-- END BIOBUZZ PANEL -->
 
-      <div class="events-grid">
 
-        <!-- WALNUT HILLS -->
-        <div class="event-card">
-          <div class="event-photos">
-            <div class="event-photo"><img src="outreach1.png" alt="Walnut Hills Elementary presentation"></div>
-            <div class="event-photo"><img src="outreach2.png" alt="Walnut Hills Elementary robot demo"></div>
+  <!-- ==================== OUTREACH TAB 2: DECODE (YOUR ORIGINAL 2025-2026 PAGE) ==================== -->
+  <div class="outreach-panel" id="panel-decode">
+
+    <!-- IMPACT STATS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">25-26 Season</div>
+        <h2 class="section-title">Our Impact</h2>
+        <div class="impact-grid">
+          <div class="impact-card red">
+            <div class="impact-num">184</div>
+            <div class="impact-lbl">Hours Coaching FLL</div>
           </div>
-          <div class="event-body">
-            <span class="event-tag">School Visit</span>
-            <div class="event-title">Walnut Hills Elementary</div>
-            <div class="event-hours">⏱ Robotics at School · 33 hrs</div>
-            <div class="event-desc">We visited Walnut Hills Elementary to introduce students to FTC robotics — presenting our robot, explaining how it works, and inspiring the next generation of engineers.</div>
+          <div class="impact-card">
+            <div class="impact-num">33</div>
+            <div class="impact-lbl">Hours — Robotics at School</div>
           </div>
-        </div>
-
-        <!-- COACHING #26808 -->
-        <div class="event-card">
-          <div class="event-photos">
-            <div class="event-photo"><img src="outreach3.png" alt="Coaching FLL team"></div>
-            <div class="event-photo"><img src="outreach4.png" alt="Coaching FLL team hands on"></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">FLL Coaching</span>
-            <div class="event-title">Coaching Team #26808</div>
-            <div class="event-hours">⏱ 184 hours</div>
-            <div class="event-desc">We mentored and coached FLL Team #26808, helping younger students learn to build and program robots, develop their engineering notebook, and prepare for competition.</div>
+          <div class="impact-card">
+            <div class="impact-num">6</div>
+            <div class="impact-lbl">Hours — Back to School FIRST</div>
           </div>
         </div>
-
-        <!-- BACK TO SCHOOL -->
-        <div class="event-card">
-          <div class="event-photos single">
-            <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🎒</div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">FIRST Event</span>
-            <div class="event-title">Back to School FIRST</div>
-            <div class="event-hours">⏱ 6 hours</div>
-            <div class="event-desc">We participated in the Back to School FIRST event, helping introduce new families and students to the world of FIRST robotics programs at the start of the season.</div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- SEASON GOALS -->
+    <section class="section" style="background: var(--dark2);">
+      <div class="container">
+        <div class="section-label">Progress</div>
+        <h2 class="section-title">Season Goals</h2>
+        <p class="section-sub">Every goal from our season start and our improved targets — all completed.</p>
+
+        <div class="goals-grid">
+
+          <!-- SEASON START GOALS -->
+          <div class="goals-box">
+            <h3>🎯 Season Start Goals</h3>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for autonomous</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 3 outreach events</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Compete consistently with human player</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score at least 9 artifacts per game</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 10 in the league</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Shoot consistently</div></div>
+          </div>
+
+          <!-- IMPROVED GOALS -->
+          <div class="goals-box">
+            <h3>🚀 Improved Goals</h3>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Code for auto in both small and large launch zone</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Complete 8 different outreach events</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Build an efficient intake system</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Score more than 12 artifacts per game</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Finish in the top 5</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add short and long range shooting</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add vision to the robot</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add spindex</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Become proficient in coding Java</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Add color sensor to the robot</div></div>
+            <div class="goal-item"><div class="goal-check">✓</div><div class="goal-text">Learn modeling and 3D printing</div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTREACH EVENTS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">Events</div>
+        <h2 class="section-title">What We Did</h2>
+        <p class="section-sub">A look at the outreach events we ran and participated in our first season.</p>
+
+        <div class="events-grid">
+
+          <!-- WALNUT HILLS -->
+          <div class="event-card">
+            <div class="event-photos">
+              <div class="event-photo"><img src="outreach1.png" alt="Walnut Hills Elementary presentation"></div>
+              <div class="event-photo"><img src="outreach2.png" alt="Walnut Hills Elementary robot demo"></div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">School Visit</span>
+              <div class="event-title">Walnut Hills Elementary</div>
+              <div class="event-hours">⏱ Robotics at School · 33 hrs</div>
+              <div class="event-desc">We visited Walnut Hills Elementary to introduce students to FTC robotics — presenting our robot, explaining how it works, and inspiring the next generation of engineers.</div>
+            </div>
+          </div>
+
+          <!-- COACHING #26808 -->
+          <div class="event-card">
+            <div class="event-photos">
+              <div class="event-photo"><img src="outreach3.png" alt="Coaching FLL team"></div>
+              <div class="event-photo"><img src="outreach4.png" alt="Coaching FLL team hands on"></div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">FLL Coaching</span>
+              <div class="event-title">Coaching Team #26808</div>
+              <div class="event-hours">⏱ 184 hours</div>
+              <div class="event-desc">We mentored and coached FLL Team #26808, helping younger students learn to build and program robots, develop their engineering notebook, and prepare for competition.</div>
+            </div>
+          </div>
+
+          <!-- BACK TO SCHOOL -->
+          <div class="event-card">
+            <div class="event-photos single">
+              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🎒</div>
+            </div>
+            <div class="event-body">
+              <span class="event-tag">FIRST Event</span>
+              <div class="event-title">Back to School FIRST</div>
+              <div class="event-hours">⏱ 6 hours</div>
+              <div class="event-desc">We participated in the Back to School FIRST event, helping introduce new families and students to the world of FIRST robotics programs at the start of the season.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- END DECODE PANEL -->
 
   <footer>
     <div class="footer-inner">
@@ -302,7 +451,7 @@
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2025 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · BIOBUZZ Season 2026–27<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
@@ -326,5 +475,18 @@
   </footer>
 
 </div>
+
+<script>
+  function switchOutreach(outreachKey) {
+    document.querySelectorAll('.outreach-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    const activePanel = document.getElementById('panel-' + outreachKey);
+    if (activePanel) {
+      activePanel.classList.add('active');
+    }
+  }
+</script>
+
 </body>
 </html>
