@@ -3,126 +3,149 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Robots | Ctrl-Alt-Defeat #31844</title>
+  <title>Meet Our Robot | Ctrl-Alt-Defeat #31844</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
     .page-hero {
-      padding: 3.5rem 2.5rem 2.5rem;
+      padding: 4rem 2.5rem 3rem;
       background: var(--dark2);
       border-bottom: 1px solid var(--border);
     }
-    .page-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      letter-spacing: 2px; line-height: 1;
-    }
-    .page-hero p {
-      color: var(--muted2); font-size: 0.95rem;
-      max-width: 560px; margin-top: 0.75rem;
-    }
-    .divider-red {
-      width: 48px; height: 3px;
-      background: var(--red); border-radius: 2px;
-      margin: 1rem 0;
-    }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: 2px; line-height: 1; }
+    .page-hero p { color: var(--muted2); font-size: 1.05rem; max-width: 560px; margin-top: 1rem; }
+    .divider-red { width: 56px; height: 3px; background: var(--red); border-radius: 2px; margin: 1.25rem 0; }
 
-    .robot-section {
-      padding: 4rem 2.5rem;
+    /* ── DROPDOWN SELECTOR BAR ── */
+    .robot-selector-wrapper {
+      background: var(--dark2);
       border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
     }
-    .robot-section:nth-child(even) { background: var(--dark); }
-    .robot-section:nth-child(odd) { background: var(--dark2); }
-
-    .season-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: rgba(201,64,64,0.15);
-      border: 1px solid var(--red);
-      color: var(--red);
-      font-size: 0.75rem;
+    .robot-selector-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .robot-select-label {
+      font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-    }
-    .season-badge.past {
-      background: rgba(255,255,255,0.05);
-      border-color: var(--border);
       color: var(--muted2);
     }
-
-    .robot-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-top: 2rem;
-      align-items: start;
-    }
-
-    .robot-card-main {
+    .robot-dropdown {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .robot-image-box {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--dark3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-    .robot-image-box img { width: 100%; height: 100%; object-fit: cover; }
-
-    .robot-details { padding: 1.75rem; }
-    .robot-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.8rem; font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .spec-list {
-      list-style: none;
-      padding: 0; margin: 1.5rem 0 0 0;
-      display: flex; flex-direction: column; gap: 0.75rem;
-    }
-    .spec-item {
-      display: flex; justify-content: space-between;
-      border-bottom: 1px dashed var(--border);
-      padding-bottom: 0.4rem;
-      font-size: 0.9rem;
-    }
-    .spec-label { color: var(--muted2); }
-    .spec-val { color: var(--light); font-weight: 700; }
-
-    .mech-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-    .mech-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      color: var(--light);
+      border: 1px solid var(--red);
+      padding: 0.65rem 1.25rem;
       border-radius: 8px;
-      padding: 1.25rem;
-    }
-    .mech-card h4 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
-      color: var(--red);
-      margin-bottom: 0.4rem;
-    }
-    .mech-card p {
-      font-size: 0.85rem;
-      color: var(--muted2);
-      line-height: 1.5;
-      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 12px rgba(201, 64, 64, 0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
+    /* ── ROBOT PANELS TOGGLE ── */
+    .robot-panel {
+      display: none;
+    }
+    .robot-panel.active {
+      display: block;
+    }
+
+    /* ── MAIN ROBOT ── */
+    .robot-hero {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 5rem 2.5rem;
+      background: var(--dark); position: relative; overflow: hidden;
+    }
+    .robot-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(201,64,64,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .robot-photo-wrap { position: relative; width: 520px; max-width: 100%; margin-bottom: 3.5rem; z-index: 1; }
+    .robot-photo-wrap::after {
+      content: ''; position: absolute; bottom: -24px; left: 10%; right: 10%;
+      height: 40px; background: rgba(201,64,64,0.2);
+      filter: blur(20px); border-radius: 50%;
+    }
+    .robot-photo-box {
+      width: 100%; aspect-ratio: 1/1; border-radius: 18px;
+      background: var(--card); border: 1px solid rgba(201,64,64,0.25);
+      overflow: hidden;
+    }
+    .robot-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .robot-text { max-width: 700px; z-index: 1; }
+    .robot-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 2px; margin-bottom: 0.5rem; }
+    .robot-text .divider-red { margin: 0.75rem auto 1.5rem; }
+    .robot-text p { color: var(--muted2); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    /* ── CENTERED STATS BAR (3 ITEMS) ── */
+    .stats-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-inner { 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 2.5rem; 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1.5rem; 
+      justify-content: center;
+      align-items: center;
+    }
+    .stat-card { text-align: center; padding: 1rem; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--red); line-height: 1; }
+    .stat-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+
+    /* ── COMPARISON ── */
+    .comparison-section { padding: 5rem 2.5rem; background: var(--dark2); }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .comp-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .comp-card:hover { transform: translateY(-4px); }
+    .comp-card.new { border-color: rgba(201,64,64,0.35); }
+    .comp-img {
+      width: 100%; aspect-ratio: 1/1;
+      overflow: hidden; background: var(--dark3);
+    }
+    .comp-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .comp-body { padding: 1.75rem; }
+    .comp-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; margin-bottom: 0.75rem; }
+    .comp-badge.old { background: rgba(255,255,255,0.08); color: var(--muted2); }
+    .comp-badge.new { background: var(--red); color: #fff; }
+    .comp-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 1.25rem; }
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .pros h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #50c878; margin-bottom: 0.6rem; }
+    .cons h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e05555; margin-bottom: 0.6rem; }
+    .pros ul, .cons ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pros ul li, .cons ul li { font-size: 0.82rem; color: var(--muted2); line-height: 1.5; display: flex; gap: 0.4rem; align-items: flex-start; }
+    .pros ul li::before { content: '+'; color: #50c878; font-weight: 700; flex-shrink: 0; }
+    .cons ul li::before { content: '−'; color: #e05555; font-weight: 700; flex-shrink: 0; }
+
+    /* ── INTAKE ── */
+    .intake-section { padding: 5rem 2.5rem; background: var(--dark); }
+    .intake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 3rem; }
+    .intake-img {
+      width: 100%; aspect-ratio: 1/1;
+      border-radius: 14px; background: var(--card);
+      border: 1px solid var(--border); overflow: hidden;
+    }
+    .intake-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sub-tag { display: inline-block; background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.3); color: var(--red); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
+    .sub-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
+    .sub-desc { color: var(--muted2); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    .sub-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sub-bullets li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--muted2); }
+    .sub-bullets li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
     footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 2.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
@@ -134,11 +157,14 @@
     .footer-links a:hover { color: var(--light); }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
-    @media(max-width: 900px) {
-      .robot-grid { grid-template-columns: 1fr; }
-      .mech-grid { grid-template-columns: 1fr; }
-      .robot-section { padding: 3rem 1.25rem; }
-      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+    @media(max-width: 768px) {
+      .stats-inner { grid-template-columns: 1fr; max-width: 400px; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .intake-grid { grid-template-columns: 1fr; }
+      .robot-hero { padding: 3.5rem 1.25rem; }
+      .comparison-section, .intake-section { padding: 4rem 1.25rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+      .robot-selector-wrapper { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -175,119 +201,165 @@
 
   <div class="page-hero">
     <div class="container">
-      <div class="section-label">Engineering & Design</div>
-      <h1>Our Robots</h1>
+      <div class="section-label">Engineering</div>
+      <h1>Meet Our Robot</h1>
       <div class="divider-red"></div>
-      <p>A look under the hood at our engineering iteration, mechanical subsystems, and code architecture across seasons.</p>
+      <p>Explore custom hardware builds, sub-systems, and design evolutions created by Team #31844.</p>
     </div>
   </div>
 
-  <!-- CURRENT SEASON: DECODE (2025–2026) -->
-  <div class="robot-section">
-    <div class="container">
-      <span class="season-badge">Current Season</span>
-      <h2 class="section-title">DECODE Robot (2025–2026)</h2>
-      <p class="section-sub">Our active iteration focusing on speed, precision scoring, and high-reliability mechanisms.</p>
+  <!-- DROPDOWN ROBOT SELECTOR BAR -->
+  <div class="robot-selector-wrapper">
+    <div class="robot-selector-inner">
+      <span class="robot-select-label">Select Competition Robot:</span>
+      <select class="robot-dropdown" id="robotSelect" onchange="switchRobot(this.value)">
+        <option value="biobuzz">BIOBUZZ Build (2026–2027) — Current</option>
+        <option value="decode" selected>DECODE Build (2025–2026) — Rookie Year</option>
+      </select>
+    </div>
+  </div>
 
-      <div class="robot-grid">
-        <div class="robot-card-main">
-          <div class="robot-image-box">
-            <!-- Swap SVG with <img src="robot-decode.jpg" alt="DECODE Robot"> when ready -->
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
-              <rect x="25" y="30" width="50" height="40" rx="4" fill="#1b1b22" stroke="#30303a" stroke-width="2"/>
-              <circle cx="35" cy="70" r="8" fill="#30303a"/>
-              <circle cx="65" cy="70" r="8" fill="#30303a"/>
-              <line x1="50" y1="30" x2="50" y2="15" stroke="#c94040" stroke-width="3"/>
-              <circle cx="50" cy="15" r="4" fill="#c94040"/>
-            </svg>
-          </div>
-          <div class="robot-details">
-            <div class="robot-title">DECODE Bot v1</div>
-            <p style="color: var(--muted2); font-size: 0.9rem; line-height: 1.5;">Designed in Autodesk Fusion and built with custom aluminum channel framing and custom 3D printed components.</p>
-            
-            <ul class="spec-list">
-              <li class="spec-item"><span class="spec-label">Drivetrain</span><span class="spec-val">4-Motor Mecanum</span></li>
-              <li class="spec-item"><span class="spec-label">Control System</span><span class="spec-val">REV Control Hub</span></li>
-              <li class="spec-item"><span class="spec-label">Vision</span><span class="spec-val">Webcam + AprilTags</span></li>
-              <li class="spec-item"><span class="spec-label">Programming Language</span><span class="spec-val">Java (FTC SDK)</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mech-grid">
-          <div class="mech-card">
-            <h4>Drivetrain Subsystem</h4>
-            <p>Mecanum wheel setup enabling precise 360-degree holonomic movement for quick repositioning during autonomous and teleop.</p>
-          </div>
-          <div class="mech-card">
-            <h4>Active Intake</h4>
-            <p>High-speed compliant roller intake engineered for swift game piece pickup and jam-free transferring.</p>
-          </div>
-          <div class="mech-card">
-            <h4>Lift System</h4>
-            <p>Multi-stage telescopic linear slides powered by high-torque motors for smooth, rapid extension.</p>
-          </div>
-          <div class="mech-card">
-            <h4>Autonomous Code</h4>
-            <p>Custom autonomous paths utilizing Odometry tracking and AprilTag alignment for pinpoint consistency.</p>
-          </div>
-        </div>
+  <!-- ==================== ROBOT TAB 1: BIOBUZZ (CURRENT SEASON - EMPTY PLACEHOLDER) ==================== -->
+  <div class="robot-panel" id="panel-biobuzz">
+    <div class="robot-hero">
+      <div class="robot-text">
+        <h2>BIOBUZZ Robot</h2>
+        <div class="divider-red"></div>
+        <p>Our current season robot is actively being designed, prototyped, and tested for the BIOBUZZ 2026–2027 campaign!</p>
+        <p>Stay tuned — photos, specs, and subsystem breakdowns will be posted here as hardware testing concludes.</p>
       </div>
     </div>
   </div>
 
-  <!-- ROOKIE SEASON: CENTERSTAGE (2024–2025) -->
-  <div class="robot-section">
-    <div class="container">
-      <span class="season-badge past">Rookie Season</span>
-      <h2 class="section-title">CENTERSTAGE Robot (2024–2025)</h2>
-      <p class="section-sub">Our inaugural FTC robot that established our team's mechanical baseline and programming stack.</p>
+  <!-- ==================== ROBOT TAB 2: DECODE (ROOKIE YEAR - YOUR ORIGINAL BUILD) ==================== -->
+  <div class="robot-panel active" id="panel-decode">
 
-      <div class="robot-grid">
-        <div class="robot-card-main">
-          <div class="robot-image-box">
-            <!-- Swap SVG with <img src="robot-centerstage.jpg" alt="CENTERSTAGE Robot"> when ready -->
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background:#141418;">
-              <rect x="25" y="35" width="50" height="35" rx="4" fill="#1b1b22" stroke="#30303a" stroke-width="2"/>
-              <circle cx="35" cy="70" r="7" fill="#30303a"/>
-              <circle cx="65" cy="70" r="7" fill="#30303a"/>
-              <path d="M 40 35 L 50 20 L 60 35 Z" fill="#30303a" stroke="#c94040" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <div class="robot-details">
-            <div class="robot-title">Rookie Bot</div>
-            <p style="color: var(--muted2); font-size: 0.9rem; line-height: 1.5;">Built to handle pixel scoring on the backdrop and rigging hanging during our rookie competition season.</p>
-            
-            <ul class="spec-list">
-              <li class="spec-item"><span class="spec-label">Drivetrain</span><span class="spec-val">Mecanum Drive</span></li>
-              <li class="spec-item"><span class="spec-label">Scoring Subsystem</span><span class="spec-val">Linear Slide + Pixel Box</span></li>
-              <li class="spec-item"><span class="spec-label">Endgame</span><span class="spec-val">Rigging Hook / Suspension</span></li>
-              <li class="spec-item"><span class="spec-label">Sensors</span><span class="spec-val">Drive Encoders + Color Sensor</span></li>
-            </ul>
-          </div>
+    <!-- MAIN ROBOT + DESCRIPTION -->
+    <div class="robot-hero">
+      <div class="robot-photo-wrap">
+        <div class="robot-photo-box">
+          <img src="robot.jpg" alt="Our Robot">
         </div>
+      </div>
+      <div class="robot-text">
+        <h2>Our Robot</h2>
+        <div class="divider-red"></div>
+        <!-- ✏️ Write your overall robot description here -->
+        <p>Write your overall robot description here — what it does, how it performs in DECODE, and what makes it stand out this season.</p>
+        <p>Add a second paragraph about your hardware strategy, autonomous strategy, or any technical highlights you're proud of.</p>
+      </div>
+    </div>
 
-        <div class="mech-grid">
-          <div class="mech-card">
-            <h4>Custom Chassis</h4>
-            <p>Compact frame layout designed specifically to fit within sizing constraints while maintaining a low center of gravity.</p>
+    <!-- STATS (3 ITEMS CENTERED ALIGNED, JAVA REMOVED) -->
+    <div class="stats-section">
+      <div class="stats-inner">
+        <div class="stat-card">
+          <div class="stat-num">17</div>
+          <div class="stat-lbl">Avg. Artifacts / Match</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Top 5</div>
+          <div class="stat-lbl">League Finish</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3D</div>
+          <div class="stat-lbl">Printed Custom Parts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OLD VS NEW COMPARISON -->
+    <div class="comparison-section">
+      <div class="container">
+        <div class="section-label">Evolution</div>
+        <h2 class="section-title">Old Robot vs New Robot</h2>
+        <p class="section-sub">A comparison of our early season robot and our current design.</p>
+
+        <div class="comparison-grid">
+          <div class="comp-card">
+            <div class="comp-img">
+              <img src="robot_old.jpg" alt="Old Robot">
+            </div>
+            <div class="comp-body">
+              <span class="comp-badge old">Early Season</span>
+              <div class="comp-title">Starterbot</div>
+              <div class="pros-cons">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Simple goBILDA starterbot and chassis</li>
+                    <li>Curved plastic guide improved shooting accuracy</li>
+                    <li>Strong foundation for early season testing</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>Limited customization</li>
+                    <li>3 max ball auto due to human player only</li>
+                    <li>Harder to maintain performance as competition increased</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mech-card">
-            <h4>Pixel Intake & Outtake</h4>
-            <p>Dual-pixel gripper paired with a multi-stage linear slide to score at high backdrop levels efficiently.</p>
-          </div>
-          <div class="mech-card">
-            <h4>Rigging Mechanism</h4>
-            <p>Endgame lift hook allowing the robot to perform a full hanging maneuver before match expiration.</p>
-          </div>
-          <div class="mech-card">
-            <h4>Encoder TeleOp</h4>
-            <p>Driver-centric controls with smooth power curves, automated slide positioning presets, and intake macros.</p>
+
+          <div class="comp-card new">
+            <div class="comp-img">
+              <img src="robot_new.jpg" alt="Current Robot">
+            </div>
+            <div class="comp-body">
+              <span class="comp-badge new">Current Design ✦</span>
+              <div class="comp-title">Season Robot</div>
+              <div class="pros-cons">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Custom design enhanced for our game strategy</li>
+                    <li>Faster cycle times due to improved intake</li>
+                    <li>Built using lessons learned from the starterbot</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>More testing needed to reach peak consistency</li>
+                    <li>Higher power requires more frequent battery changes</li>
+                    <li>Increased mechanical complexity vs starterbot</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- INTAKE SYSTEM -->
+    <div class="intake-section">
+      <div class="container">
+        <div class="section-label">Mechanism</div>
+        <h2 class="section-title">Intake System</h2>
+        <div class="intake-grid">
+          <div class="intake-img">
+            <img src="robot_intake.jpg" alt="Intake System">
+          </div>
+          <div>
+            <span class="sub-tag">Mechanism 01</span>
+            <div class="sub-title">Intake System</div>
+            <div class="sub-desc">Our intake system features a roller mechanism mounted at the front of the robot, paired with a funnel to guide balls smoothly into the robot. The compact design keeps the center of gravity low while allowing for fast and consistent ball collection during both autonomous and driver-controlled periods.</div>
+            <ul class="sub-bullets">
+              <li>Roller intake designed for fast and reliable ball collection</li>
+              <li>Funnel guides balls smoothly into the robot</li>
+              <li>Wide intake opening allows successful pickups even when slightly misaligned</li>
+              <li>Prioritizes consistency to prevent any over capacity issues</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- END DECODE PANEL -->
 
   <footer>
     <div class="footer-inner">
@@ -296,7 +368,7 @@
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · DECODE Season 2025–26<br/>© 2026 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · BIOBUZZ Season 2026–27<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
@@ -320,5 +392,18 @@
   </footer>
 
 </div>
+
+<script>
+  function switchRobot(robotKey) {
+    document.querySelectorAll('.robot-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    const activePanel = document.getElementById('panel-' + robotKey);
+    if (activePanel) {
+      activePanel.classList.add('active');
+    }
+  }
+</script>
+
 </body>
 </html>
