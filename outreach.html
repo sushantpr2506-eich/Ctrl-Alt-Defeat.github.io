@@ -68,20 +68,20 @@
     /* IMPACT STATS */
     .impact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(1, 1fr);
+      max-width: 450px;
+      margin: 2rem auto 0;
     }
     .impact-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
     }
     .impact-card.red { border-color: rgba(201,64,64,0.4); background: rgba(201,64,64,0.06); }
-    .impact-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--red); line-height: 1; }
-    .impact-lbl { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+    .impact-num { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--red); line-height: 1; }
+    .impact-lbl { font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
 
     /* GOALS */
     .goals-grid {
@@ -135,10 +135,6 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .event-card:hover { border-color: rgba(201,64,64,0.3); transform: translateY(-4px); }
-    .event-card.slot-card {
-      border: 2px dashed rgba(201, 64, 64, 0.4);
-      background: rgba(201, 64, 64, 0.02);
-    }
     .event-photos {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -181,7 +177,6 @@
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 
     @media(max-width: 768px) {
-      .impact-grid { grid-template-columns: 1fr; }
       .goals-grid { grid-template-columns: 1fr; }
       .events-grid { grid-template-columns: 1fr; }
       .page-hero { padding: 3rem 1.25rem 2rem; }
@@ -235,96 +230,14 @@
     <div class="outreach-selector-inner">
       <span class="outreach-select-label">Select Competition Season:</span>
       <select class="outreach-dropdown" id="outreachSelect" onchange="switchOutreach(this.value)">
-        <option value="biobuzz" selected>BIOBUZZ (2026–2027) — Current</option>
-        <option value="decode">DECODE (2025–2026) — Rookie Year</option>
+        <option value="decode" selected>DECODE (2025–2026) — Rookie Year</option>
+        <option value="biobuzz">BIOBUZZ (2026–2027) — Current</option>
       </select>
     </div>
   </div>
 
-  <!-- ==================== OUTREACH TAB 1: BIOBUZZ (CURRENT SEASON) ==================== -->
-  <div class="outreach-panel active" id="panel-biobuzz">
-    
-    <!-- IMPACT STATS -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label">26-27 Season</div>
-        <h2 class="section-title">Our Impact</h2>
-        <p class="section-sub">Sustaining momentum with over 220+ hours committed to expanding STEM access.</p>
-        
-        <div class="impact-grid">
-          <div class="impact-card red">
-            <div class="impact-num">220+</div>
-            <div class="impact-lbl">Total Outreach Hours</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">120+</div>
-            <div class="impact-lbl">FLL & Youth Mentorship</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">100+</div>
-            <div class="impact-lbl">Hands-On STEM Workshops</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUTREACH EVENTS / SLOTS -->
-    <section class="section" style="background: var(--dark2);">
-      <div class="container">
-        <div class="section-label">Initiatives</div>
-        <h2 class="section-title">BIOBUZZ Events</h2>
-        <p class="section-sub">Events planned and completed during the current season.</p>
-
-        <div class="events-grid">
-
-          <!-- EVENT SLOT READY FOR UPCOMING EVENT -->
-          <div class="event-card slot-card">
-            <div class="event-photos single">
-              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🚗</div>
-            </div>
-            <div class="event-body">
-              <span class="event-tag">Hands-On STEM Event</span>
-              <div class="event-title">Balloon Cars & Archimedes Pumps</div>
-              <div class="event-hours">⏱ 4-Day Interactive Workshop</div>
-              <div class="event-desc">An engaging multi-day outreach challenge where elementary students build balloon cars on Days 1–2 to learn propulsion, followed by Archimedes screw pumps on Days 3–4 to explore mechanical advantage.</div>
-            </div>
-          </div>
-
-          <!-- EVENT SLOT 2 -->
-          <div class="event-card slot-card">
-            <div class="event-photos single">
-              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">⚙️</div>
-            </div>
-            <div class="event-body">
-              <span class="event-tag">Mentorship</span>
-              <div class="event-title">FLL Team Coaching & Support</div>
-              <div class="event-hours">⏱ Season-Long Commitment</div>
-              <div class="event-desc">Continuing our dedication to mentoring younger student teams in FIRST LEGO League, providing technical, programming, and presentation guidance.</div>
-            </div>
-          </div>
-
-          <!-- EVENT SLOT 3 -->
-          <div class="event-card slot-card">
-            <div class="event-photos single">
-              <div class="event-photo" style="display:flex; align-items:center; justify-content:center; background:var(--dark3); font-size:4rem;">🤖</div>
-            </div>
-            <div class="event-body">
-              <span class="event-tag">Community Demo</span>
-              <div class="event-title">[ Upcoming Event Slot ]</div>
-              <div class="event-hours">⏱ TBD Hours</div>
-              <div class="event-desc">Slot ready for your next upcoming community demo, school showcase, or STEM fair event for the BIOBUZZ season.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </div> <!-- END BIOBUZZ PANEL -->
-
-
-  <!-- ==================== OUTREACH TAB 2: DECODE (YOUR ORIGINAL 2025-2026 PAGE) ==================== -->
-  <div class="outreach-panel" id="panel-decode">
+  <!-- ==================== OUTREACH TAB 1: DECODE (ROOKIE SEASON) ==================== -->
+  <div class="outreach-panel active" id="panel-decode">
 
     <!-- IMPACT STATS -->
     <section class="section">
@@ -333,16 +246,8 @@
         <h2 class="section-title">Our Impact</h2>
         <div class="impact-grid">
           <div class="impact-card red">
-            <div class="impact-num">184</div>
-            <div class="impact-lbl">Hours Coaching FLL</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">33</div>
-            <div class="impact-lbl">Hours — Robotics at School</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">6</div>
-            <div class="impact-lbl">Hours — Back to School FIRST</div>
+            <div class="impact-num">220+</div>
+            <div class="impact-lbl">Total Outreach Hours</div>
           </div>
         </div>
       </div>
@@ -406,7 +311,7 @@
             <div class="event-body">
               <span class="event-tag">School Visit</span>
               <div class="event-title">Walnut Hills Elementary</div>
-              <div class="event-hours">⏱ Robotics at School · 33 hrs</div>
+              <div class="event-hours">⏱ Robotics at School</div>
               <div class="event-desc">We visited Walnut Hills Elementary to introduce students to FTC robotics — presenting our robot, explaining how it works, and inspiring the next generation of engineers.</div>
             </div>
           </div>
@@ -420,7 +325,7 @@
             <div class="event-body">
               <span class="event-tag">FLL Coaching</span>
               <div class="event-title">Coaching Team #26808</div>
-              <div class="event-hours">⏱ 184 hours</div>
+              <div class="event-hours">⏱ FLL Mentorship</div>
               <div class="event-desc">We mentored and coached FLL Team #26808, helping younger students learn to build and program robots, develop their engineering notebook, and prepare for competition.</div>
             </div>
           </div>
@@ -433,7 +338,7 @@
             <div class="event-body">
               <span class="event-tag">FIRST Event</span>
               <div class="event-title">Back to School FIRST</div>
-              <div class="event-hours">⏱ 6 hours</div>
+              <div class="event-hours">⏱ Community Outreach</div>
               <div class="event-desc">We participated in the Back to School FIRST event, helping introduce new families and students to the world of FIRST robotics programs at the start of the season.</div>
             </div>
           </div>
@@ -444,6 +349,19 @@
 
   </div> <!-- END DECODE PANEL -->
 
+
+  <!-- ==================== OUTREACH TAB 2: BIOBUZZ (EMPTY FOR NOW) ==================== -->
+  <div class="outreach-panel" id="panel-biobuzz">
+    <section class="section">
+      <div class="container" style="text-align: center; padding: 4rem 1rem;">
+        <div class="section-label">26-27 Season</div>
+        <h2 class="section-title">BIOBUZZ Outreach</h2>
+        <p class="section-sub" style="margin: 1rem auto 0; max-width: 500px;">Content for the BIOBUZZ season will be added here soon!</p>
+      </div>
+    </section>
+  </div> <!-- END BIOBUZZ PANEL -->
+
+
   <footer>
     <div class="footer-inner">
       <div>
@@ -451,7 +369,7 @@
           <img class="footer-logo" src="logo.png" alt="Logo">
           <span class="footer-name">Ctrl-Alt-Defeat · #31844</span>
         </div>
-        <div class="footer-copy">FTC Robotics · BIOBUZZ Season 2026–27<br/>© 2026 Team 31844. All rights reserved.</div>
+        <div class="footer-copy">FTC Robotics · Team 31844<br/>© 2026 Team 31844. All rights reserved.</div>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
